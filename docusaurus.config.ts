@@ -15,6 +15,7 @@ function museumCollections(): Plugin {
         description: doc.description,
         href: doc.permalink,
         hall: String(doc.frontMatter.museum_hall || ''),
+        category: String(doc.frontMatter.category || ''),
         specimen: String(doc.frontMatter.specimen || '—'),
         date: String(doc.frontMatter.date || ''),
       })).sort((a, b) => b.date.localeCompare(a.date) || a.specimen.localeCompare(b.specimen)));

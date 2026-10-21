@@ -31,6 +31,7 @@ title: 文章标题
 description: 一句话摘要
 slug: /amber-003
 museum_hall: amber
+category: 诗歌
 specimen: "003"
 date: "2026-10-21"
 hide_table_of_contents: true
@@ -38,6 +39,8 @@ hide_table_of_contents: true
 ```
 
 `museum_hall` 必须是 `strata`、`wild`、`amber`、`fragments` 之一。`slug` 必须唯一，同馆内编号不能重复。目录从文章元数据自动读取题名、编号、写作日期。
+
+`category` 填写中文分类：琥珀馆为 `小说` 或 `诗歌`；碎屑馆为 `影评`、`感悟` 或 `游记`。未填写分类的作品仍会显示在“全部”中。分类不改变馆内编号。
 
 在正文开头加写作日期（可参考现有文章中的 `<time>`），日期必须与开头的 `date` 一致。诗歌每行末尾保留两个空格，再换行；节与节之间留空行。正文末尾可放返回所在展厅的链接。
 

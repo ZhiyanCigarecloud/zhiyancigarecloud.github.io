@@ -1,0 +1,14 @@
+export const hallCategories: Record<string, readonly string[]> = {
+  amber: ['小说', '诗歌'],
+  fragments: ['影评', '感悟', '游记'],
+};
+
+export function selectCategory<T extends {hall: string; category: string; specimen: string}>(
+  collections: readonly T[], hallId: string, requested: string | null,
+) {
+  const categories = hallCategories[hallId] || [];
+  const category = requested && categories.includes(requested) ? requested : '';
+  const entries = collections.filter(item => item.hall === hallId && (!category || item.category === category))
+    .sort((a, b) => a.specimen.localeCompare(b.specimen, 'zh-CN', {numeric: true}));
+  return {categories, category, entries};
+}

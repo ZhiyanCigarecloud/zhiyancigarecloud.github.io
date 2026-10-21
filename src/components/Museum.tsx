@@ -6,6 +6,7 @@ import {useLocation, useHistory} from '@docusaurus/router';
 import {usePluginData} from '@docusaurus/useGlobalData';
 import {halls, tips, updated, type HallId} from '../data/museum';
 import {paginate} from '../utils/pagination';
+import {selectCategory} from '../utils/categories';
 
 export function DateLabel({date = updated, label = '更新于'}: {date?: string; label?: string}) {
   const [year, month, day] = date.slice(0, 10).split('-');
@@ -52,7 +53,7 @@ export function CuratorTips() {
   </aside>;
 }
 
-export type Collection = {id: string; title: string; description: string; href: string; hall: string; specimen: string; date: string};
+export type Collection = {id: string; title: string; description: string; href: string; hall: string; category: string; specimen: string; date: string};
 export function useCollections() {
   return usePluginData('museum-collections') as Collection[];
 }
@@ -61,22 +62,31 @@ export function HallPage({hallId}: {hallId: HallId}) {
   const hall = halls.find(item => item.id === hallId)!;
   const {search} = useLocation();
   const isBrowser = useIsBrowser();
-  const entries = useCollections().filter(item => item.hall === hallId).sort((a, b) => a.specimen.localeCompare(b.specimen, 'zh-CN', {numeric: true}));
-  const {page, totalPages, items} = paginate(entries, isBrowser ? new URLSearchParams(search).get('page') : null);
+  const params = new URLSearchParams(isBrowser ? search : '');
+  const {categories, category, entries} = selectCategory(useCollections(), hallId, params.get('category'));
+  const {page, totalPages, items} = paginate(entries, params.get('page'));
   const heading = useRef<HTMLHeadingElement>(null);
   const firstRender = useRef(true);
   useEffect(() => {
     if (firstRender.current) {firstRender.current = false; return;}
     heading.current?.focus({preventScroll: true});
     heading.current?.scrollIntoView({block: 'start'});
-  }, [page]);
-  const pageUrl = (number: number) => number === 1 ? hall.href : `${hall.href}?page=${number}`;
+  }, [page, category]);
+  const pageUrl = (number: number, selected = category) => {
+    const query = new URLSearchParams();
+    if (selected) query.set('category', selected);
+    if (number > 1) query.set('page', String(number));
+    return hall.href + (query.size ? `?${query}` : '');
+  };
   return <Layout title={hall.title} description={hall.description}>
     <main id="main-content" className="hall-page reading-wrap">
       <Link to="/halls/" className="back-link">← 返回展厅导览</Link>
       <header className="hall-heading"><span className="eyebrow">{hall.subject}</span><h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p><DateLabel /></header>
+      {categories.length > 0 && <nav className="archive-categories" aria-label={`${hall.title}文章分类`}>
+        {['', ...categories].map(item => <Link key={item} to={pageUrl(1, item)} aria-current={category === item ? 'page' : undefined}>{item || '全部'}</Link>)}
+      </nav>}
       <section className="archive-list" aria-label={`${hall.title}馆藏目录`}>
-        {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="title-separator" aria-hidden="true">—</span><span className="specimen-title">{item.title}</span></Link><DateLabel date={item.date} label="写于" /></li>)}</ol> : <p className="empty-hall">尚无馆藏，等待下一次发掘。</p>}
+        {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="title-separator" aria-hidden="true">—</span><span className="specimen-title">{item.title}</span></Link><DateLabel date={item.date} label="写于" /></li>)}</ol> : <p className="empty-hall">{category ? `暂时还没有${category}，等待下一次发掘。` : '尚无馆藏，等待下一次发掘。'}</p>}
       </section>
       {entries.length > 0 && <nav className="archive-pagination" aria-label="馆藏目录分页">
         {page > 1 ? <Link rel="prev" to={pageUrl(page - 1)}>← 上一页</Link> : <span aria-disabled="true">← 上一页</span>}
