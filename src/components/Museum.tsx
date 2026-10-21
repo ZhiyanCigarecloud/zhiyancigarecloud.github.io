@@ -81,10 +81,11 @@ export function HallPage({hallId}: {hallId: HallId}) {
   return <Layout title={hall.title} description={hall.description}>
     <main id="main-content" className="hall-page reading-wrap">
       <Link to="/halls/" className="back-link">← 返回展厅导览</Link>
-      <header className="hall-heading"><span className="eyebrow">{hall.subject}</span><h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p><DateLabel /></header>
-      {categories.length > 0 && <nav className="archive-categories" aria-label={`${hall.title}文章分类`}>
-        {['', ...categories].map(item => <Link key={item} to={pageUrl(1, item)} aria-current={category === item ? 'page' : undefined}>{item || '全部'}</Link>)}
-      </nav>}
+      <header className="hall-heading">
+        {categories.length > 0 ? <nav className="archive-categories" aria-label={`${hall.title}文章分类`}>
+          {['', ...categories].map(item => <Link key={item} to={pageUrl(1, item)} aria-current={category === item ? 'page' : undefined}>{item || '全部'}</Link>)}
+        </nav> : <span className="eyebrow">{hall.subject}</span>}
+        <h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p><DateLabel /></header>
       <section className="archive-list" aria-label={`${hall.title}馆藏目录`}>
         {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="title-separator" aria-hidden="true">—</span><span className="specimen-title">{item.title}</span></Link><DateLabel date={item.date} label="写于" /></li>)}</ol> : <p className="empty-hall">{category ? `暂时还没有${category}，等待下一次发掘。` : '尚无馆藏，等待下一次发掘。'}</p>}
       </section>
