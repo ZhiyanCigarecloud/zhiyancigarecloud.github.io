@@ -16,8 +16,6 @@ function museumCollections(): Plugin {
         href: doc.permalink,
         hall: String(doc.frontMatter.museum_hall || ''),
         specimen: String(doc.frontMatter.specimen || '—'),
-        status: String(doc.frontMatter.museum_status || '展出中'),
-        example: doc.frontMatter.museum_example === true,
         date: String(doc.frontMatter.date || ''),
       })).sort((a, b) => b.date.localeCompare(a.date) || a.specimen.localeCompare(b.specimen)));
     },
@@ -26,7 +24,7 @@ function museumCollections(): Plugin {
 
 const config: Config = {
   title: '纸烟的博物馆奇妙夜',
-  tagline: '每段文字，都是被发掘和重新命名的化石标本。',
+  tagline: '一只叫纸烟的恐龙，在这里收藏学习、探索、小说诗歌与杂谈感悟。',
   url: 'https://zhiyancigarecloud.github.io',
   baseUrl: '/',
   organizationName: 'ZhiyanCigarecloud',
