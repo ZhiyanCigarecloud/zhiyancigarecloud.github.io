@@ -7,7 +7,7 @@ export function selectCategory<T extends {hall: string; category: string; specim
   collections: readonly T[], hallId: string, requested: string | null,
 ) {
   const categories = hallCategories[hallId] || [];
-  const category = requested && categories.includes(requested) ? requested : '';
+  const category = requested && categories.includes(requested) ? requested : (categories[0] || '');
   const entries = collections.filter(item => item.hall === hallId && (!category || item.category === category))
     .sort((a, b) => (a.date || '').localeCompare(b.date || '') || a.specimen.localeCompare(b.specimen, 'zh-CN', {numeric: true}));
   return {categories, category, entries};

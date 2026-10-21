@@ -83,7 +83,7 @@ export function HallPage({hallId}: {hallId: HallId}) {
       <Link to="/halls/" className="back-link">← 返回展厅导览</Link>
       <header className="hall-heading">
         {categories.length > 0 ? <nav className="archive-categories" aria-label={`${hall.title}文章分类`}>
-          {['', ...categories].map(item => <Link key={item} to={pageUrl(1, item)} aria-current={category === item ? 'page' : undefined}>{item || '全部'}</Link>)}
+          {categories.map(item => <Link key={item} to={pageUrl(1, item)} aria-current={category === item ? 'page' : undefined}>{item}</Link>)}
         </nav> : <span className="eyebrow">{hall.subject}</span>}
         <h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p><DateLabel /></header>
       <section className="archive-list" aria-label={`${hall.title}馆藏目录`}>
