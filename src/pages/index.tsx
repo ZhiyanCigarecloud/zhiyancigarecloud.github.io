@@ -25,7 +25,7 @@ export default function Home() {
     <main id="main-content" className="museum-home">
       <section className="museum-hero" aria-labelledby="welcome-title">
         <div className="hero-copy">
-          <p className="eyebrow">今夜，博物馆为你开放</p>
+          <p className="eyebrow">心中有绿色，出门便是草</p>
           <h1 id="welcome-title"><span>纸烟的博物馆</span><span>奇妙夜</span></h1>
           <section className="curator-intro" id="curator" aria-labelledby="curator-title"><h2 id="curator-title">关于馆长</h2><p>{curator}</p><DateLabel /></section>
           <Link className="visit-button" to="/entrance/">开始漫游 <span aria-hidden="true">↗</span></Link>

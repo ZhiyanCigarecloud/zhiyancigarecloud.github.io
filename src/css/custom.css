@@ -106,44 +106,66 @@ body:has(.museum-menu[open]) {overflow:hidden;}
   .hall-card {min-height:300px;}
 }
 @media (max-width:760px) {
-  .section-wrap,.reading-wrap {padding:30px 24px 60px;}
-  .museum-header {padding:22px 24px; min-height:72px; gap:12px;}
-  .museum-brand {font-size:13px; white-space:normal;}
-  .desktop-navigation {display:none;} .menu-toggle {display:block; white-space:nowrap;}
-  .museum-hero {display:flex; flex-direction:column; height:auto;} .hero-copy {display:contents;}
-  .hero-copy > .eyebrow {order:0; margin:20px 24px 12px; font-size:11px;}
-  .hero-copy h1 {order:1; margin:0 24px 24px; font-size:clamp(28px,7.4vw,46px); line-height:1.5;}
-  .hero-copy h1 span {display:inline;}
-  .specimen-picture {order:2; width:100%; height:auto; min-height:0; aspect-ratio:390 / 430;}
-  .specimen-picture::after {inset:0 0 auto; width:100%; height:28px; background:linear-gradient(to bottom,var(--museum-paper),transparent);}
-  .specimen-picture::before {content:''; position:absolute; z-index:1; bottom:0; left:0; width:100%; height:28px; background:linear-gradient(to bottom,transparent,var(--museum-paper));}
-  .curator-intro {order:3; margin:24px; max-width:none;}
-  .curator-intro p {font-size:15px; line-height:2;}
-  .visit-button {order:4; align-self:flex-start; margin:0 24px 36px;}
-  .curator-tips {order:5; margin:0 24px 32px; width:calc(100% - 48px);}
-  .museum-footer {padding:20px 24px; font-size:11px;}
-  .back-link {margin-bottom:30px;}
-  .guide-heading {margin-bottom:32px;}
-  .guide-heading h1 {font-size:32px;}
-  .hall-grid {gap:16px;}
-  .hall-card {padding:22px 18px; min-height:290px;}
-  .hall-card h2 {font-size:26px;}
-  .hall-card p {font-size:13px;}
-  .hall-number {margin-bottom:20px;}
-  .hall-heading h1 {font-size:38px;}
-  .archive-list li {display:block; padding:17px 0;}
-  .archive-list li > a {gap:12px;}
-  .archive-list li > .date-label {display:block; padding-left:70px; margin-top:6px;}
-  .specimen-title {font-size:21px;}
-  .specimen-number {flex-basis:30px;}
-  .archive-pagination {font-size:12px;}
-  .theme-doc-markdown {padding:24px 8px 40px;}
-  .theme-doc-markdown h1 {font-size:32px;}
-  .theme-doc-markdown > p,.poem {font-size:16px;}
+  .section-wrap,.reading-wrap {padding:24px 20px 44px;}
+  .museum-header {padding:12px 20px; min-height:64px; gap:12px;}
+  .museum-brand {font-size:14px; line-height:1.7; white-space:normal; min-width:0;}
+  .desktop-navigation {display:none;}
+  .menu-toggle {display:block; min-width:64px; min-height:44px; white-space:nowrap;}
+  .museum-menu {width:min(360px,calc(100vw - 20px)); padding:20px; overflow-y:auto; overscroll-behavior:contain;}
+  .menu-close {min-height:44px;}
+  .menu-inner h2 {margin:24px 0;}
+  .menu-inner nav a {padding:14px 0; min-height:52px; font-size:20px;}
+  .museum-hero {display:flex; flex-direction:column; height:auto;}
+  .hero-copy {display:contents;}
+  .hero-copy > .eyebrow {order:0; margin:14px 20px 10px; font-size:12px; line-height:1.8; letter-spacing:.12em;}
+  .hero-copy h1 {order:1; margin:0 20px 18px; font-size:clamp(32px,9vw,40px); line-height:1.35;}
+  .hero-copy h1 span {display:block;}
+  .specimen-picture {order:2; width:100%; height:clamp(210px,68vw,280px); min-height:0; flex:none; aspect-ratio:auto;}
+  .specimen-image {position:absolute; top:50%; left:0; transform:translateY(-50%);}
+  .specimen-picture::after {inset:0 0 auto; width:100%; height:36px; background:linear-gradient(to bottom,var(--museum-paper),transparent);}
+  .specimen-picture::before {content:''; position:absolute; z-index:1; bottom:0; left:0; width:100%; height:36px; background:linear-gradient(to bottom,transparent,var(--museum-paper));}
+  .curator-intro {order:3; margin:18px 20px 20px; max-width:none; min-width:0;}
+  .curator-intro h2 {margin-bottom:8px;}
+  .curator-intro p {font-size:15px; line-height:1.95; overflow-wrap:anywhere;}
+  .visit-button {order:4; align-self:stretch; justify-content:space-between; margin:0 20px 28px; min-height:50px; padding:12px 22px;}
+  .curator-tips {order:5; margin:0 20px 28px; width:calc(100% - 40px);}
+  .museum-footer {padding:16px 20px; font-size:11px; gap:6px; flex-direction:column; align-items:flex-start;}
+  .back-link {margin-bottom:24px; min-height:32px;}
+  .guide-heading {margin-bottom:26px;}
+  .guide-heading h1 {font-size:30px; line-height:1.5; margin:10px 0 16px;}
+  .hall-grid {gap:14px;}
+  .hall-card {padding:22px; min-width:0; min-height:260px;}
+  .hall-card h2 {font-size:28px;}
+  .hall-card p {font-size:14px; line-height:1.9; overflow-wrap:anywhere;}
+  .hall-number {margin-bottom:16px;}
+  .hall-heading {margin-bottom:26px;}
+  .hall-heading h1 {font-size:36px;}
+  .hall-heading p {font-size:15px; overflow-wrap:anywhere;}
+  .archive-list {min-height:140px; padding-top:0;}
+  .archive-list li {display:block; padding:15px 0;}
+  .archive-list li > a {gap:12px; min-height:44px;}
+  .archive-list li > .date-label {display:block; padding-left:66px; margin-top:2px;}
+  .specimen-title {font-size:21px; min-width:0; flex:1;}
+  .specimen-number {flex-basis:28px;}
+  .archive-pagination {font-size:12px; gap:8px; margin-top:18px; padding-top:12px;}
+  .archive-pagination > * {display:inline-flex; align-items:center; justify-content:center; min-height:44px;}
+  .archive-pagination > a {padding-inline:4px;}
+  .theme-doc-markdown {padding:18px 4px 28px; min-width:0;}
+  .theme-doc-markdown h1 {font-size:30px; margin-bottom:16px; overflow-wrap:anywhere;}
+  .theme-doc-markdown > p,.poem {font-size:16px; line-height:2.1; overflow-wrap:anywhere;}
+  .theme-doc-markdown .writing-date {font-size:12px; margin-bottom:28px;}
+  .poem p {margin-bottom:1.8em;}
+  .entrance-page {min-height:calc(100svh - 64px); padding:20px;}
+  .entrance-controls {gap:16px;}
 }
-@media (max-width:380px) {
+@media (max-width:600px) {
   .hall-grid {grid-template-columns:minmax(0,1fr);}
-  .hall-card {min-height:260px;}
+  .hall-card {display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-areas:"subject number" "title number" "description description" "link link"; gap:8px 16px; min-height:0; padding:20px 22px;}
+  .hall-number {grid-area:number; align-self:start; justify-self:end; margin:0; font-size:26px;}
+  .hall-subject {grid-area:subject; font-size:12px;}
+  .hall-card h2 {grid-area:title; margin:0; line-height:1.5;}
+  .hall-card p {grid-area:description; margin:4px 0 6px;}
+  .enter-hall {grid-area:link; margin-top:0; min-height:32px; display:flex; align-items:center; justify-content:space-between;}
 }
 @media (prefers-reduced-motion:reduce) {
   html {scroll-behavior:auto;}
