@@ -53,6 +53,9 @@ body:has(.museum-menu[open]) {overflow:hidden;}
 .guide-heading h1 {font-size:clamp(34px,4.2vw,54px); line-height:1.6; margin:14px 0 22px;}
 .hall-grid {display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px;}
 .hall-card {display:flex; flex-direction:column; align-items:flex-start; min-height:332px; padding:28px 24px; background:var(--museum-fossil-gray); border:1px solid rgb(23 28 32 / .13); color:var(--museum-night); text-decoration:none; transition:border-color .2s,transform .2s;}
+.hall-card[data-hall="strata"] {background:#d1b69b;}
+.hall-card[data-hall="wild"] {background:#c1cdb7;}
+.hall-card[data-hall="amber"] {background:#e4c17e;}
 .hall-card:hover {color:var(--museum-night); border-color:var(--museum-mineral); transform:translateY(-3px); text-decoration:none;}
 .hall-number {font-family:'Noto Serif SC',serif; font-size:24px; color:var(--museum-mineral); margin-bottom:24px;}
 .hall-subject {font-size:11px; letter-spacing:.15em; color:#626467;}
