@@ -1,5 +1,5 @@
 export const updated = '2026-10-21';
-export const curator = '一只叫纸烟的恐龙，SJTU溥渊未来技术学院健康科学与技术25级。你可以在这里找到有关我的一切。';
+export const curator = '一只叫纸烟的恐龙。你可以在这里找到有关我的一切。';
 
 export const halls = [
   {id: 'strata', title: '地层馆', subject: '课内学习', description: '有如西西弗斯推石上山的课内学习', href: '/strata/'},

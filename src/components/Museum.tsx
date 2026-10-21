@@ -24,10 +24,9 @@ export function MuseumHeader() {
       {!isHome && <><Link to="/halls/">展厅导览</Link>{halls.map(hall => <Link key={hall.id} to={hall.href} aria-current={pathname === hall.href ? 'page' : undefined}>{hall.title}</Link>)}</>}
     </nav>
     {!isHome && <button className="menu-toggle" aria-label="打开导览菜单" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>导览 ☰</button>}
-    <dialog className="museum-menu" ref={dialog} aria-labelledby="menu-title" onClick={event => {if (event.target === dialog.current) close();}}>
+    <dialog className="museum-menu" ref={dialog} aria-label="导览菜单" onClick={event => {if (event.target === dialog.current) close();}}>
       <div className="menu-inner">
         <button autoFocus className="menu-close" onClick={close}>关闭导览 ×</button>
-        <h2 id="menu-title">今晚，想去哪里？</h2>
         <nav aria-label="手机导览">
           <Link to="/" onClick={close}>首页</Link>
           <Link to="/halls/" onClick={close}>展厅导览</Link>
