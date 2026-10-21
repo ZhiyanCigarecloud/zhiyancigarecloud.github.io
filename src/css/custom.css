@@ -194,3 +194,5 @@ body:has(.museum-menu[open]) {overflow:hidden;}
 .archive-categories a[aria-current=page] {color:var(--museum-mineral); border-bottom-color:currentColor; font-weight:600;}
 .archive-categories a:hover {color:var(--museum-mineral);}
 .archive-categories a:focus-visible {outline:2px solid var(--museum-mineral); outline-offset:3px;}
+
+.archive-category-label {font-family:'Noto Sans SC',sans-serif; font-size:13px; color:#626467; white-space:nowrap;}

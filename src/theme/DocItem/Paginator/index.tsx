@@ -8,12 +8,12 @@ export default function ArticlePaginator() {
   const collections = useCollections();
   const current = collections.find(item => item.id === metadata.id);
   if (!current?.hall) return null;
-  const entries = collections.filter(item => item.hall === current.hall)
+  const entries = collections.filter(item => item.hall === current.hall && item.category === current.category)
     .sort((a, b) => a.specimen.localeCompare(b.specimen, 'zh-CN', {numeric: true}));
   const index = entries.findIndex(item => item.id === current.id);
   const previous = entries[index - 1];
   const next = entries[index + 1];
-  return <nav className="article-pagination" aria-label="同馆文章切换">
+  return <nav className="article-pagination" aria-label="同分类文章切换">
     {previous ? <Link to={previous.href} rel="prev" className="article-previous" aria-label={`上一篇：${previous.title}`}>
       <span className="article-page-direction">← 上一篇</span>
       <span className="article-page-title">{previous.specimen} — {previous.title}</span>

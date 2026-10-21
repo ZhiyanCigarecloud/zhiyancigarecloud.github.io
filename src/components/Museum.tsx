@@ -87,7 +87,7 @@ export function HallPage({hallId}: {hallId: HallId}) {
         </nav> : <span className="eyebrow">{hall.subject}</span>}
         <h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p><DateLabel /></header>
       <section className="archive-list" aria-label={`${hall.title}馆藏目录`}>
-        {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="title-separator" aria-hidden="true">—</span><span className="specimen-title">{item.title}</span></Link><DateLabel date={item.date} label="写于" /></li>)}</ol> : <p className="empty-hall">{category ? `暂时还没有${category}，等待下一次发掘。` : '尚无馆藏，等待下一次发掘。'}</p>}
+        {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="title-separator" aria-hidden="true">—</span><span className="specimen-title">{item.category && !category && <span className="archive-category-label">{item.category} · </span>}{item.title}</span></Link><DateLabel date={item.date} label="写于" /></li>)}</ol> : <p className="empty-hall">{category ? `暂时还没有${category}，等待下一次发掘。` : '尚无馆藏，等待下一次发掘。'}</p>}
       </section>
       {entries.length > 0 && <nav className="archive-pagination" aria-label="馆藏目录分页">
         {page > 1 ? <Link rel="prev" to={pageUrl(page - 1)}>← 上一页</Link> : <span aria-disabled="true">← 上一页</span>}
