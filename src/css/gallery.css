@@ -232,3 +232,6 @@ body {font-synthesis:none;}
  .contact-row dd {font-size:18px;}
  .contact-row button {display:block; margin-left:0;}
 }
+
+.contact-illustration {width:280px; max-width:100%; margin:40px auto 0;}
+.contact-illustration img {display:block; width:100%; height:auto;}
