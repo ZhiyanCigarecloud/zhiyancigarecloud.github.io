@@ -234,4 +234,4 @@ body {font-synthesis:none;}
 }
 
 .contact-illustration {width:280px; max-width:100%; margin:40px auto 0;}
-.contact-illustration img {display:block; width:100%; height:auto;}
+.contact-illustration img {display:block; width:100%; height:auto; mix-blend-mode:darken;}
