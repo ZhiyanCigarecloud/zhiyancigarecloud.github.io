@@ -22,7 +22,7 @@ export function MuseumHeader() {
     <Link to="/" className="museum-brand" aria-label="纸烟的博物馆奇妙夜，返回首页"><span className="brand-mark" aria-hidden="true">纸</span><span>纸烟的博物馆<span className="brand-night">奇妙夜</span></span></Link>
     {!isHome && <><nav className="desktop-navigation" aria-label="主要导航">
       <Link to="/" aria-current={isHome ? 'page' : undefined}>首页</Link>
-      <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>展厅导览</Link>{halls.map(hall => <Link key={hall.id} to={hall.href} aria-current={pathname === hall.href ? 'page' : undefined}>{hall.title}</Link>)}
+      <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>四馆简介</Link>
     </nav>
     <button className="menu-toggle" aria-label="打开导览菜单" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>导览 <span aria-hidden="true">☰</span></button>
     <dialog className="museum-menu" ref={dialog} aria-label="导览菜单" onClick={event => {if (event.target === dialog.current) close();}}>
@@ -30,8 +30,7 @@ export function MuseumHeader() {
         <button autoFocus className="menu-close" onClick={close}>关闭导览 ×</button>
         <nav aria-label="手机导览">
           <Link to="/" onClick={close}>首页</Link>
-          <Link to="/halls/" onClick={close}>展厅导览</Link>
-          {halls.map(hall => <Link key={hall.id} to={hall.href} onClick={close}>{hall.title}<span aria-hidden="true">↗</span></Link>)}
+          <Link to="/halls/" onClick={close}>四馆简介</Link>
         </nav>
       </div>
     </dialog></>}
@@ -81,7 +80,7 @@ export function HallPage({hallId}: {hallId: HallId}) {
   };
   return <Layout title={hall.title} description={hall.description}>
     <main id="main-content" className="hall-page reading-wrap">
-      <Link to="/halls/" className="back-link">← 返回展厅导览</Link>
+      <Link to="/halls/" className="back-link">← 返回四馆简介</Link>
       <header className="hall-heading">
         {categories.length > 0 ? <nav className="archive-categories" aria-label={`${hall.title}文章分类`}>
           {categories.map(item => <Link key={item} to={pageUrl(1, item)} aria-current={category === item ? 'page' : undefined}>{item}</Link>)}

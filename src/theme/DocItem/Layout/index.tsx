@@ -11,7 +11,7 @@ export default function ReadingLayout(props: Props) {
   const current = useCollections().find(item => item.id === metadata.id);
   const hall = halls.find(item => item.id === current?.hall);
   return <div className="museum-reader">
-    {hall && <nav className="reader-path" aria-label="文章位置"><Link to="/halls/">展厅</Link><span aria-hidden="true">/</span><Link to={hall.href}>{hall.title}</Link>{current?.category && <><span aria-hidden="true">/</span><Link to={`${hall.href}?category=${encodeURIComponent(current.category)}`}>{current.category}</Link></>}</nav>}
+    {hall && <nav className="reader-path" aria-label="文章位置"><Link to="/halls/">四馆简介</Link><span aria-hidden="true">/</span><Link to={hall.href}>{hall.title}</Link>{current?.category && <><span aria-hidden="true">/</span><Link to={`${hall.href}?category=${encodeURIComponent(current.category)}`}>{current.category}</Link></>}</nav>}
     <OriginalLayout {...props} />
   </div>;
 }
