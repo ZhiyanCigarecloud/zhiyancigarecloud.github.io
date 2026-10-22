@@ -24,12 +24,11 @@ function ResourceItem({item}: {item: Resource}) {
   </li>;
 }
 
-function ResourceSection({title, items}: {title: string; items: Resource[]}) {
+function ResourceSection({items}: {items: Resource[]}) {
   const categories = Array.from(new Set(items.map(item => item.category || '')));
-  return <section className="resource-section" aria-label={title}>
-    <h2>{title}</h2>
+  return <section className="resource-section" aria-label="资源分类">
     {items.length ? categories.map(category => <div className="resource-group" key={category}>
-      {category && <h3>{category}</h3>}
+      {category && <h2>{category}</h2>}
       <ul className="resource-list">{items.filter(item => (item.category || '') === category).map(item => <ResourceItem key={item.url} item={item} />)}</ul>
     </div>) : <p className="resource-empty">暂未收录。</p>}
   </section>;
@@ -39,8 +38,8 @@ export default function Resources() {
   return <Layout title="资源整合" description="收集实用的网页工具。">
     <main id="main-content" className="reading-wrap resources-page">
       <Link to="/halls/" className="back-link">← 返回四馆简介</Link>
-      <header className="hall-heading"><h1>资源整合</h1><p>实用的网页工具，收在这里。</p></header>
-      <ResourceSection title="网页工具" items={webTools} />
+      <header className="resources-heading"><h1>资源整合</h1></header>
+      <ResourceSection items={webTools} />
     </main>
   </Layout>;
 }
