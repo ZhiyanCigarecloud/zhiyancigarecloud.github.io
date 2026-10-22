@@ -6,4 +6,6 @@ export type Resource = {
 };
 
 // 在对应数组中添加 {title: '名称', url: 'https://...', description: '说明'}。
-export const webTools: Resource[] = [];
+export const webTools: Resource[] = [
+  {title: 'Z-Library', url: 'https://zh.z-library.sk/'},
+];
