@@ -7,7 +7,9 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "serve": "docusaurus serve",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prebuild": "python3 scripts/prepare-font.py",
+    "predev": "python3 scripts/prepare-font.py"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",
@@ -28,5 +30,7 @@
     "@types/react": "^19.0.0",
     "typescript": "~5.6.3"
   },
-  "engines": {"node": ">=20"}
+  "engines": {
+    "node": ">=20"
+  }
 }

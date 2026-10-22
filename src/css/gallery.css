@@ -1,9 +1,9 @@
 /* Exhibition catalogue: warm paper, mineral ink, precise rules. */
-:root {--museum-paper:#f3f1e9; --museum-night:#252525; --museum-line:#d3d1c9; --museum-muted:#6b6a63; --museum-surface:#f9f8f3; --ifm-heading-font-family:'Noto Sans SC',sans-serif; --ifm-heading-font-weight:500;}
+:root {--museum-paper:#f3f1e9; --museum-night:#252525; --museum-line:#d3d1c9; --museum-muted:#6b6a63; --museum-surface:#f9f8f3; --ifm-heading-font-family:'Huiwen Mincho',serif; --ifm-heading-font-weight:500;}
 body::before {content:''; position:fixed; inset:16px auto 16px 12px; width:7px; background:var(--museum-mineral); z-index:25; pointer-events:none;}
 .museum-header {width:100%; height:100px; max-width:1280px; margin:auto; padding:0 48px; background:transparent; border-bottom:1px solid var(--museum-line);}
 .museum-brand {font-family:var(--ifm-font-family-base); font-weight:500; font-size:16px; letter-spacing:-.03em;}
-.brand-mark {width:34px; height:34px; border:0; border-radius:0; background:var(--museum-mineral); color:var(--museum-paper); font-family:'Noto Serif SC',serif; font-size:21px;}
+.brand-mark {width:34px; height:34px; border:0; border-radius:0; background:var(--museum-mineral); color:var(--museum-paper); font-family:'Huiwen Mincho',serif; font-size:21px;}
 .brand-night {margin-left:0;}
 .desktop-navigation {gap:0; height:auto;}
 .desktop-navigation a {font-size:12px; min-height:44px; padding:0 24px; border-left:1px solid var(--museum-line);}
@@ -88,7 +88,7 @@ body::before {content:''; position:fixed; inset:16px auto 16px 12px; width:7px; 
 .resource-actions button:hover {color:var(--museum-mineral);}
 .museum-reader {max-width:800px; margin-top:30px;}
 .theme-doc-markdown h1 {font-family:var(--ifm-font-family-base); font-weight:500; letter-spacing:-.025em;}
-.theme-doc-markdown > p,.poem {font-family:'Noto Serif SC',serif;}
+.theme-doc-markdown > p,.poem {font-family:'Huiwen Mincho',serif;}
 .article-page-title {font-family:var(--ifm-font-family-base); font-size:16px;}
 @media(min-width:1500px) {.museum-hero {padding-block:80px; gap:80px;} .specimen-picture {height:540px;}}
 @media(max-width:1250px) {.museum-footer,.home-update {margin-inline:48px; width:calc(100% - 96px);} .museum-hero {gap:40px;} .hero-copy h1 {font-size:4.3vw;}}
@@ -164,3 +164,9 @@ body::before {content:''; position:fixed; inset:16px auto 16px 12px; width:7px; 
  .theme-doc-markdown > p,.poem {font-size:16px;}
  .article-page-title {font-size:14px;}
 }
+
+/* Keep the original print texture rather than tightly packed sans-serif spacing. */
+body {font-synthesis:none;}
+.hero-copy h1,.hero-title-accent,.guide-heading h1,.hall-heading h1,.resources-heading h1,.theme-doc-markdown h1 {letter-spacing:0; font-weight:400;}
+.hero-copy h1 {font-size:clamp(34px,4vw,58px);}
+@media(max-width:600px) {.hero-copy h1 {font-size:clamp(28px,7.3vw,42px);}}

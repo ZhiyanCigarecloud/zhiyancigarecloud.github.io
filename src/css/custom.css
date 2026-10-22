@@ -1,13 +1,17 @@
-@import '@fontsource/noto-serif-sc/400.css';
-@import '@fontsource/noto-sans-sc/400.css';
-@import '@fontsource/noto-sans-sc/500.css';
+@font-face {
+  font-family: 'Huiwen Mincho';
+  src: url('/fonts/huiwen-mincho.woff') format('woff');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
 :root {
   --museum-night:#292c32; --museum-hall:#28333c; --museum-bone:#f8f5ed;
   --museum-gold:#c5a676; --museum-mineral:#6f5aa8; --museum-fossil-gray:#e7e6e1; --museum-paper:#f7f5ee;
   --museum-muted:#74736d; --museum-line:#deddd5; --museum-surface:#fdfcf8;
   --ifm-color-primary:#6f5aa8; --ifm-color-primary-dark:#615095; --ifm-color-primary-darker:#59498b; --ifm-color-primary-darkest:#483b71;
   --ifm-color-primary-light:#7d69b1; --ifm-color-primary-lighter:#8875b8; --ifm-color-primary-lightest:#a18fc9;
-  --ifm-font-family-base:'Noto Sans SC',sans-serif; --ifm-heading-font-family:'Noto Serif SC',serif;
+  --ifm-font-family-base:'Huiwen Mincho',serif; --ifm-heading-font-family:'Huiwen Mincho',serif;
   --ifm-heading-font-weight:400; --ifm-font-color-base:var(--museum-night);
   --ifm-background-color:var(--museum-paper); --ifm-background-surface-color:var(--museum-surface);
 }
