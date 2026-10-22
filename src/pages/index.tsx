@@ -25,13 +25,13 @@ export default function Home() {
     <main id="main-content" className="museum-home">
       <section className="museum-hero" aria-labelledby="welcome-title">
         <div className="hero-copy">
-          <p className="eyebrow">心中有绿色，出门便是草</p>
-          <h1 id="welcome-title"><span>纸烟的博物馆</span><span>奇妙夜</span></h1>
+          <p className="eyebrow"><span className="opening-dot" aria-hidden="true" />心中有绿色，出门便是草</p>
+          <h1 id="welcome-title"><span>纸烟的博物馆</span><span className="hero-title-accent">奇妙夜<span className="hero-title-star" aria-hidden="true">✳</span></span></h1>
           <section className="curator-intro" id="curator" aria-labelledby="curator-title"><h2 id="curator-title">关于馆长</h2><p>{curator}</p><DateLabel /></section>
           <Link className="visit-button" to="/entrance/">开始漫游 <span aria-hidden="true">↗</span></Link>
           <CuratorTips />
         </div>
-        <SpecimenImage />
+        <figure className="hero-exhibit"><div className="exhibit-label"><span>私人馆藏</span><span>持续生长中</span></div><SpecimenImage /><figcaption><span>一只叫纸烟的恐龙</span><span>文字的化石，时间的切片。</span></figcaption></figure>
       </section>
     </main>
   </Layout>;

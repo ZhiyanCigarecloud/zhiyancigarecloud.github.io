@@ -19,12 +19,12 @@ export function MuseumHeader() {
   const {pathname} = useLocation();
   const isHome = pathname === '/';
   return <header className="museum-header">
-    <Link to="/" className="museum-brand" aria-label="纸烟的博物馆奇妙夜，返回首页">纸烟的博物馆奇妙夜</Link>
+    <Link to="/" className="museum-brand" aria-label="纸烟的博物馆奇妙夜，返回首页"><span className="brand-mark" aria-hidden="true">纸</span><span>纸烟的博物馆<span className="brand-night">奇妙夜</span></span></Link>
     <nav className="desktop-navigation" aria-label="主要导航">
       <Link to="/" aria-current={isHome ? 'page' : undefined}>首页</Link>
-      {!isHome && <><Link to="/halls/">展厅导览</Link>{halls.map(hall => <Link key={hall.id} to={hall.href} aria-current={pathname === hall.href ? 'page' : undefined}>{hall.title}</Link>)}</>}
+      <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>展厅导览</Link>{halls.map(hall => <Link key={hall.id} to={hall.href} aria-current={pathname === hall.href ? 'page' : undefined}>{hall.title}</Link>)}
     </nav>
-    {!isHome && <button className="menu-toggle" aria-label="打开导览菜单" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>导览 ☰</button>}
+    <button className="menu-toggle" aria-label="打开导览菜单" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>导览 <span aria-hidden="true">☰</span></button>
     <dialog className="museum-menu" ref={dialog} aria-label="导览菜单" onClick={event => {if (event.target === dialog.current) close();}}>
       <div className="menu-inner">
         <button autoFocus className="menu-close" onClick={close}>关闭导览 ×</button>
@@ -39,7 +39,7 @@ export function MuseumHeader() {
 }
 
 export function MuseumFooter() {
-  return <footer className="museum-footer"><span>© {new Date().getFullYear()} 纸烟 · 博物馆持续编目中</span><DateLabel /></footer>;
+  return <footer className="museum-footer"><span>© {new Date().getFullYear()} 纸烟的博物馆奇妙夜</span><span className="footer-note">收藏文字，也收藏时间。</span><DateLabel /></footer>;
 }
 
 export function CuratorTips() {
@@ -76,7 +76,8 @@ export function HallPage({hallId}: {hallId: HallId}) {
     const query = new URLSearchParams();
     if (selected) query.set('category', selected);
     if (number > 1) query.set('page', String(number));
-    return hall.href + (query.size ? `?${query}` : '');
+    const value = query.toString();
+    return hall.href + (value ? `?${value}` : '');
   };
   return <Layout title={hall.title} description={hall.description}>
     <main id="main-content" className="hall-page reading-wrap">
@@ -86,8 +87,9 @@ export function HallPage({hallId}: {hallId: HallId}) {
           {categories.map(item => <Link key={item} to={pageUrl(1, item)} aria-current={category === item ? 'page' : undefined}>{item}</Link>)}
         </nav> : <span className="eyebrow">{hall.subject}</span>}
         <h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p><DateLabel /></header>
+      <div className="archive-section-heading"><h2>{category || hall.subject}</h2><span>共 {entries.length} 篇馆藏</span></div>
       <section className="archive-list" aria-label={`${hall.title}馆藏目录`}>
-        {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="title-separator" aria-hidden="true">—</span><span className="specimen-title">{item.category && !category && <span className="archive-category-label">{item.category} · </span>}{item.title}</span></Link><DateLabel date={item.date} label="写于" /></li>)}</ol> : <p className="empty-hall">{category ? `暂时还没有${category}，等待下一次发掘。` : '尚无馆藏，等待下一次发掘。'}</p>}
+        {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="specimen-title">{item.category && !category && <span className="archive-category-label">{item.category} · </span>}{item.title}</span></Link><DateLabel date={item.date} label="" /><span className="archive-arrow" aria-hidden="true">↗</span></li>)}</ol> : <p className="empty-hall">{category ? `暂时还没有${category}，等待下一次发掘。` : '尚无馆藏，等待下一次发掘。'}</p>}
       </section>
       {entries.length > 0 && <nav className="archive-pagination" aria-label="馆藏目录分页">
         {page > 1 ? <Link rel="prev" to={pageUrl(page - 1)}>← 上一页</Link> : <span aria-disabled="true">← 上一页</span>}

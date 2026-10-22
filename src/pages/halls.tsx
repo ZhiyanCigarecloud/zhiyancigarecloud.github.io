@@ -1,18 +1,22 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import {DateLabel} from '../components/Museum';
+import {DateLabel, useCollections} from '../components/Museum';
+import HallArtwork from '../components/HallArtwork';
 import {halls} from '../data/museum';
+import {hallCategories} from '../utils/categories';
 
 export default function Halls() {
+  const collections = useCollections();
   return <Layout title="展厅导览" description="地层馆、野外馆、琥珀馆、碎屑馆。从任意一处，开始漫游。">
     <main id="main-content" className="halls-page section-wrap">
       <Link to="/" className="back-link">← 返回首页</Link>
-      <header className="guide-heading"><p className="eyebrow">四馆导览</p><h1>从任意一处，<br />开始漫游。</h1><DateLabel /></header>
-      <div className="hall-grid">{halls.map((hall, index) => <Link className="hall-card" data-hall={hall.id} key={hall.id} to={hall.href}>
-        <span className="hall-number" aria-hidden="true">0{index + 1}</span><span className="hall-subject">{hall.subject}</span>
-        <h2>{hall.title}</h2><p>{hall.description}</p><span className="enter-hall">查看馆藏 <span aria-hidden="true">↗</span></span>
-      </Link>)}</div>
+      <header className="guide-heading"><div><p className="eyebrow">四馆导览</p><h1>从任意一处，<br /><span>开始漫游。</span></h1></div><div className="guide-intro"><p>学习的地层，兴趣的旷野，<br />还有被时间留下的故事与碎屑。</p><DateLabel /></div></header>
+      <div className="hall-grid">{halls.map((hall, index) => <article className="hall-card" data-hall={hall.id} key={hall.id}>
+        <div className="hall-card-top"><span className="hall-subject">{hall.subject}</span><span className="hall-number">0{index + 1}</span></div>
+        <div className="hall-card-content"><div><h2><Link to={hall.href}>{hall.title}</Link></h2><p>{hall.description}</p></div><HallArtwork hall={hall.id} /></div>
+        <div className="hall-card-bottom"><nav aria-label={`${hall.title}分类入口`}>{(hallCategories[hall.id] || []).map(category => <Link key={category} to={`${hall.href}?category=${encodeURIComponent(category)}`}>{category}<span aria-hidden="true">↗</span></Link>)}</nav><Link className="enter-hall" to={hall.href}>查看馆藏 <span aria-hidden="true">↗</span><span className="hall-count">{collections.filter(item => item.hall === hall.id).length} 篇</span></Link></div>
+      </article>)}</div>
     </main>
   </Layout>;
 }
