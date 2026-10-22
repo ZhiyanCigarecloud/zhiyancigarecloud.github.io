@@ -1,78 +1,174 @@
 # 纸烟的博物馆奇妙夜
 
-Docusaurus、React、TypeScript 个人文字博物馆。当前版本按独立页面组织：
+一只叫纸烟的恐龙，在这里收藏学习、探索、小说诗歌与杂谈感悟。
 
-首页 → 入馆动画 → 四馆导览 → 单馆目录 → 文章正文。
+**心中有绿色，出门便是草。**
 
-首页只展示标题、恐龙化石首图、关于馆长和开始漫游按钮。没有向下拼接导览或文章。tips 暂不显示，等待馆长提供专用文案。尚未收到 GIF 时，开始漫游直接进入四馆导览。
+- [访问网站](https://zhiyancigarecloud.github.io/)
+- [四馆简介](https://zhiyancigarecloud.github.io/halls/)
+- [资源整合](https://zhiyancigarecloud.github.io/resources/)
+- [找到我](https://zhiyancigarecloud.github.io/contact/)
 
-## 四个展厅
+网站使用 Docusaurus 3、React 和 TypeScript，文章使用 Markdown / MDX，托管于 GitHub Pages。
 
-| 展厅 | 内容 | 目录地址 | 正文目录 |
-| --- | --- | --- | --- |
-| 地层馆 | 课内学习 | `/strata/` | `content/strata/` |
-| 野外馆 | 课外探索 | `/wild/` | `content/wild/` |
-| 琥珀馆 | 小说诗歌 | `/amber/` | `content/amber/` |
-| 碎屑馆 | 杂谈感悟 | `/fragments/` | `content/fragments/` |
+## 页面与功能
 
-馆藏目录使用无框的文字链接，按编号排序，每页七篇。第二页地址如 `/amber/?page=2`，可前后翻页并保留浏览器返回记录。目前只有三篇真实内容，分页不会伪造额外文章。
+首页独立展示标题、恐龙化石首图、关于馆长、开始漫游和一条更新记录。点击“开始漫游”后进入四馆简介，再进入展厅目录和文章正文，不把所有页面堆叠在首页下方。
 
-- 琥珀馆 001《审视》，写于 2022-04-30。
-- 琥珀馆 002《大马士革》，写于 2022-09-10。
-- 碎屑馆 001，原文未提供标题，暂标“未题”，写于 2022-04-30。
+| 展厅 | 内容 | 细分类 | 目录地址 | 内容文件夹 |
+| --- | --- | --- | --- | --- |
+| 地层馆 | 课内学习 | 暂无 | `/strata/` | `content/strata/` |
+| 野外馆 | 课外探索 | 暂无 | `/wild/` | `content/wild/` |
+| 琥珀馆 | 小说诗歌 | 小说、诗歌 | `/amber/` | `content/amber/` |
+| 碎屑馆 | 杂谈感悟 | 影评、感悟、游记 | `/fragments/` | `content/fragments/` |
 
-## 添加文章
+- 四馆简介保留四张展厅卡片，细分类名称只作说明，点击“查看馆藏”进入目录。
+- 展厅内部可切换细分类，不设置“全部”分类；默认显示第一个分类。
+- 目录按写作日期从早到晚排列，每页七篇，使用文字标题链接。
+- 编号在每个展厅的每个分类内独立从 `001` 开始。
+- 正文底部提供同分类的上一篇、下一篇，无需返回大目录查找。
+- 游记包含南京、苏州、北京照片集；桌面端两列、手机端单列，图片保留完整比例，点击可查看图片文件，日期标在照片集末尾。
+- 资源整合分为“学习”和“生活”，展示网页工具及简短介绍。
+- “找到我”包含微信、Gmail 和恐龙表情包；微信可复制，邮箱使用邮件链接。
+- 非首页的顶部导航依次为：首页、四馆简介、资源整合、找到我；手机端收进导览菜单。
 
-在对应 `content/` 子目录下新建 Markdown 文件。文章开头示意如下（仅维护说明，不会发布为馆藏）：
+入馆 GIF 尚未配置，因此入口会直接进入四馆简介。互动小记的文案尚未提供，当前保持隐藏。
 
-```yaml
+## 添加文章：可以直接在 GitHub 操作
+
+不需要每篇都发给 AI，也不需要手动修改文章目录。
+
+1. 打开仓库，进入对应的 `content/` 子文件夹。
+2. 点击 **Add file → Create new file**，填写一个没有使用过的文件名，例如 `new-poem.md`。
+3. 参照同分类的现有文章填写开头信息，再粘贴正文。
+4. 点击 **Commit changes** 保存到 `main`。
+5. 到 **Actions** 查看发布结果，构建和部署成功后再打开网站检查。
+
+新增文章会自动出现在所属目录、分页和上一篇 / 下一篇导航中。网站目前没有后台编辑器，内容文件是文章的来源。
+
+### 文章格式
+
+以下是维护模板，替换后再使用：
+
+```md
 ---
 title: 文章标题
 description: 一句话摘要
-slug: /amber-003
+slug: /my-new-poem
 museum_hall: amber
 category: 诗歌
-specimen: "003"
-date: "2026-10-21"
+specimen: "026"
+date: "2026-10-22"
 hide_table_of_contents: true
 ---
+
+<p className="writing-date">琥珀馆 · 诗歌 · 026　写于 <time dateTime="2026-10-22">2026年10月22日</time></p>
+
+这里填写正文。
+
+[← 返回诗歌目录](/amber/?category=诗歌)
 ```
 
-`museum_hall` 必须是 `strata`、`wild`、`amber`、`fragments` 之一。`slug` 必须唯一，同馆同分类内编号不能重复。每个分类的 `specimen` 独立从 001 开始，按写作日期从早到晚连续编号，同日作品保留原先顺序；补录早期作品时，需要顺延该分类后续作品的编号及正文日期行中的编号。文件名和 `slug` 是固定地址，不随展示编号更改。目录从文章元数据自动读取题名、编号、写作日期。
+| 字段 | 填写规则 |
+| --- | --- |
+| `title` | 显示在目录和正文中的标题。 |
+| `description` | 可选的一句话摘要。 |
+| `slug` | 唯一且稳定的文章地址片段，避免与其他文章重复。上述模板的正文地址是 `/collection/my-new-poem/`。 |
+| `museum_hall` | 填 `strata`、`wild`、`amber` 或 `fragments`。 |
+| `category` | 琥珀馆填“小说”或“诗歌”；碎屑馆填“影评”“感悟”或“游记”。地层馆、野外馆目前可省略。 |
+| `specimen` | 所属分类内的三位编号，使用引号保留前导零。模板编号只是示意，添加前应检查该分类已有编号。 |
+| `date` | 作品写作日期，使用带引号的 `YYYY-MM-DD`；只知道月份时可填 `YYYY-MM`。 |
 
-`category` 填写中文分类：琥珀馆为 `小说` 或 `诗歌`；碎屑馆为 `影评`、`感悟` 或 `游记`。琥珀馆和碎屑馆文章必须填写对应分类；进入展厅时默认选中第一个分类。文章标识为“展厅 · 分类 · 编号”；不同分类允许各自拥有 001。
+编号按同分类作品的写作日期从早到晚排列；同日作品沿用已有顺序。补录更早的作品时，应顺延该分类后续作品的 `specimen`，同时修改正文日期行中的展示编号。**文件名和 `slug` 不随展示编号更改**，以免旧链接失效。
 
-在正文开头加写作日期（可参考现有文章中的 `<time>`），日期必须与开头的 `date` 一致。诗歌每行末尾保留两个空格，再换行；节与节之间留空行。正文末尾可放返回所在展厅的链接。
+正文中的日期应与 `date` 一致，不用上传日期代替历史作品的写作日期。诗歌如需保留换行，每行末尾加两个空格；节与节之间留一空行，也可参考现有诗歌写法。
 
-首页的关于馆长、展厅说明和统一更新日期位于 `src/data/museum.ts`。写作日期和网站介绍的更新日期分开标注，不以今天的日期替代历史作品日期。
+目录示例：`/amber/?category=诗歌&page=2`。返回链接应指向文章所属的展厅和分类。
 
-## 后续接入 GIF 与 tips
+## 添加照片集
 
-把 GIF 放入 `static/img/`，在 `src/data/museum.ts` 的 `entrance` 中设置 `src`（如 `/img/entrance.gif`）及 `durationMs`（单次播放时长，单位毫秒）。GIF 没有播放完成事件，需按实际帧时长填写。计时从图片加载完成后开始；播放完进入 `/halls/`，也可以跳过。加载失败可手动继续，减少动态效果偏好会直接进入展厅。
+1. 将照片放进 `static/img/` 下独立的文件夹，例如 `static/img/travel-new/`。
+2. 建议先压缩为 WebP 或 JPG，长边约 1600 像素，保留方向与完整画面；确认文件非空且可以打开。
+3. 在 `content/fragments/` 中新建 `.mdx` 文件，参考 `travel-001.mdx`、`travel-002.mdx` 或 `travel-003.mdx`。
+4. 填写 `museum_hall: fragments`、`category: 游记`、日期及该分类内的编号。
+5. 将照片放进 `travel-photo-grid`，逐张更新图片路径、尺寸、替代文字和序号。末尾单独标注日期。
 
-`tips` 目前是空数组，因此前台不会显示任何小记或占位。收到专用文案后，填入 `{text: '馆长提供的文案', date: '2026-10-21'}`。组件已支持点击换下一条，最后一条回到第一条。
+单张图片的写法：
 
-## 本地开发与检查
+```mdx
+<div className="travel-photo-grid">
+  <figure>
+    <a href="/img/travel-new/01.jpg" aria-label="放大查看：照片内容">
+      <img src="/img/travel-new/01.jpg" alt="照片内容" width="1600" height="1200" loading="eager" decoding="async" />
+    </a>
+    <figcaption>01 / 01</figcaption>
+  </figure>
+</div>
 
-安装 Node.js 22，然后在项目文件夹的终端执行：
+<p className="album-date"><time dateTime="2026-10">2026/10</time></p>
+```
+
+`width` 和 `height` 填照片的实际尺寸。第一张可用 `loading="eager"`，后续照片用 `loading="lazy"`。`static/img/example.jpg` 在网页中的路径是 `/img/example.jpg`，不带 `static`。
+
+## 常用修改位置
+
+| 想修改的内容 | 文件 |
+| --- | --- |
+| 关于馆长、四馆说明、首页更新日期、GIF 和小记配置 | `src/data/museum.ts` |
+| 首页标题、短句、首图布局、更新记录文案 | `src/pages/index.tsx` |
+| 四馆简介布局 | `src/pages/halls.tsx` |
+| 导航、手机菜单、馆藏目录 | `src/components/Museum.tsx` |
+| 分类名称与目录排序 | `src/utils/categories.ts` |
+| 学习 / 生活工具及简介 | `src/data/resources.ts` |
+| 联系方式和表情包引用 | `src/pages/contact.tsx` |
+| 基础样式、字体声明 | `src/css/custom.css` |
+| 当前视觉样式、桌面字号、照片集和联系方式样式 | `src/css/gallery.css` |
+| 字体生成脚本 | `scripts/prepare-font.py` |
+| 构建、站点地址和文章元数据收集 | `docusaurus.config.ts` |
+| GitHub Actions 发布流程 | `.github/workflows/deploy.yml` |
+
+`gallery.css` 在 `custom.css` 之后加载。网站使用米黄色纸张背景、矿物紫细节，四馆分别使用褐、绿、琥珀、化石灰。全站使用汇文明朝体，联系方式页表情包通过 CSS 混合模式与页面底色衔接。
+
+添加网页工具时，在 `src/data/resources.ts` 的 `webTools` 数组中增加一项，`category` 填“学习”或“生活”，简介尽量简短并以句号结尾。
+
+## 本地开发
+
+需要 Node.js 22、Python 3 和 fontTools。下面的 `python3` 在部分 Windows 环境中需改成 `python`。
 
 ```bash
 npm ci
-npm start
+python3 -m pip install fonttools==4.61.1
+npm run dev
 ```
+
+`npm run dev` 会先准备汇文明朝体，再启动开发服务。首次准备字体需要联网下载固定版本的源字体，并校验文件；后续可使用本机缓存。字体按 `src/`、`content/` 中的文字生成子集，新文章中的字会在下一次构建时纳入。
+
+字体来源、许可及构建说明见 `static/fonts/README.md` 和 `static/fonts/Huiwen-Mincho-LICENSE.txt`。生成的 `static/fonts/huiwen-mincho.woff` 不提交到仓库，正式构建时生成后随网站发布。
+
+如果使用 `npm start`，请先手动执行一次 `python3 scripts/prepare-font.py`。
 
 发布前检查：
 
 ```bash
 npm run typecheck
-node --experimental-strip-types --test tests/pagination.test.mjs
+node --experimental-strip-types --test tests/*.test.mjs
 npm run build
 ```
 
-## 发布
+构建产物位于 `build/`，可用 `npm run serve` 本地预览。只更新 README 等说明文档时，不需要重新运行整站测试。
 
-GitHub Pages 使用 GitHub Actions。合并到 `main` 后会自动检查类型、测试七篇分页、构建并部署。仓库 **Settings → Pages → Source** 使用 **GitHub Actions**。
+## 发布与排错
 
-线上地址：https://zhiyancigarecloud.github.io/
+仓库的 **Settings → Pages → Source** 应选择 **GitHub Actions**。推送到 `main` 会触发类型检查、分类与分页测试、字体准备、网站构建和 GitHub Pages 部署。
 
-图片、纸张纹理与字体均保存在项目中。保留纸张米色、化石灰卡片、矿物紫细节与沉积金按钮；页面去除了原先添加的英文标签。
+**提交成功不等于网站已经更新。** 在仓库的 **Actions** 中找到对应提交，确认 `build` 和 `deploy` 都成功，再检查线上页面。部署可能需要几分钟；如果没有出现对应任务，可以在 **Build and deploy museum → Run workflow** 中选择 `main` 手动启动。
+
+- **页面仍是旧版：** 先看部署是否完成，再尝试强制刷新或无痕窗口，排除缓存。
+- **图片空白：** 检查原文件能否打开、是否为空、路径和大小写是否一致，并直接访问图片地址验证。
+- **新文章没出现：** 检查所属展厅、分类、日期和编号，确认没有设置 `unlisted: true`，再看 Actions 是否报错。
+- **构建因链接失败：** 检查 `slug` 和返回链接；站点配置会将失效链接作为构建错误。
+
+## 尚未启用的内容
+
+- **入馆 GIF：** 放入 `static/img/`，在 `src/data/museum.ts` 的 `entrance` 中填写 `src` 和 `durationMs`。GIF 没有播放结束事件，需填写实际单次时长；计时从图片加载后开始，也支持跳过。
+- **互动小记：** `tips` 当前为空数组，页面不展示占位。提供专用文案后，可填入 `{text: '文案', date: '2026-10-22'}`，组件支持循环切换。文章正文不作为小记内容。
