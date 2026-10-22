@@ -20,7 +20,7 @@ export function MuseumHeader() {
   const isHome = pathname === '/';
   return <header className="museum-header">
     <Link to="/" className="museum-brand" aria-label="纸烟的博物馆奇妙夜，返回首页"><span className="brand-mark" aria-hidden="true">纸</span><span>纸烟的博物馆<span className="brand-night">奇妙夜</span></span></Link>
-    <nav className="desktop-navigation" aria-label="主要导航">
+    {!isHome && <><nav className="desktop-navigation" aria-label="主要导航">
       <Link to="/" aria-current={isHome ? 'page' : undefined}>首页</Link>
       <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>展厅导览</Link>{halls.map(hall => <Link key={hall.id} to={hall.href} aria-current={pathname === hall.href ? 'page' : undefined}>{hall.title}</Link>)}
     </nav>
@@ -34,7 +34,7 @@ export function MuseumHeader() {
           {halls.map(hall => <Link key={hall.id} to={hall.href} onClick={close}>{hall.title}<span aria-hidden="true">↗</span></Link>)}
         </nav>
       </div>
-    </dialog>
+    </dialog></>}
   </header>;
 }
 

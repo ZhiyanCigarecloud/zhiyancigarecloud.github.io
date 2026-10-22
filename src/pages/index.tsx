@@ -31,7 +31,7 @@ export default function Home() {
           <Link className="visit-button" to="/entrance/">开始漫游 <span aria-hidden="true">↗</span></Link>
           <CuratorTips />
         </div>
-        <figure className="hero-exhibit"><div className="exhibit-label"><span>私人馆藏</span><span>持续生长中</span></div><SpecimenImage /><figcaption><span>一只叫纸烟的恐龙</span><span>文字的化石，时间的切片。</span></figcaption></figure>
+        <figure className="hero-exhibit"><div className="exhibit-label"><span>私人馆藏</span><span>持续生长中</span></div><SpecimenImage /></figure>
       </section>
       <aside className="home-update" aria-label="更新记录"><span>更新记录</span><time dateTime={updated}>{updated.replaceAll('-', '.')}</time><p>更新全站界面，优化手机阅读与分类导航。</p></aside>
     </main>

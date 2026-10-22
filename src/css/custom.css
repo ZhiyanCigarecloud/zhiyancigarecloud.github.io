@@ -90,8 +90,8 @@ body:has(.museum-menu[open]) {overflow:hidden;}
 .hall-card p {font-size:12px; color:#66675e; max-width:210px; line-height:1.9; margin:0 0 18px;}
 .hall-artwork {width:44%; max-width:210px; flex:none; color:var(--hall-ink); opacity:.8;}
 .hall-card-bottom {display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; border-top:1px solid rgb(60 56 42 / .13); padding-top:17px;}
-.hall-card-bottom nav {display:flex; gap:16px;}
-.hall-card-bottom nav:empty {display:none;}
+.hall-category-labels {display:flex; gap:16px; font-size:12px; color:#53574e;}
+.hall-category-labels:empty {display:none;}
 .hall-card-bottom a {font-size:12px; color:#53574e; text-decoration:none; min-height:32px; display:inline-flex; align-items:center; gap:8px;}
 .hall-card-bottom a:hover {color:var(--museum-mineral); text-decoration:underline;}
 .enter-hall {margin-left:auto;}
@@ -177,7 +177,7 @@ body:has(.museum-menu[open]) {overflow:hidden;}
   .hall-card h2 {font-size:28px;}
   .hall-card-content {min-height:160px;}
   .hall-artwork {width:38%;}
-  .hall-card-bottom nav {gap:12px;}
+  .hall-category-labels {gap:12px;}
   .hall-count {display:none;}
   .reading-wrap {padding-inline:32px;}
 }
@@ -219,7 +219,7 @@ body:has(.museum-menu[open]) {overflow:hidden;}
   .hall-artwork {width:40%; max-width:140px;}
   .hall-card-bottom {gap:8px; padding-top:12px;}
   .hall-card-bottom a {min-height:40px; font-size:11px;}
-  .hall-card-bottom nav {gap:16px;}
+  .hall-category-labels {gap:16px; font-size:11px;}
   .hall-heading {padding-bottom:24px; margin-bottom:26px;}
   .hall-heading h1 {font-size:36px; margin:22px 0 12px;}
   .hall-heading > p {font-size:12px; line-height:1.9; max-width:290px;}
