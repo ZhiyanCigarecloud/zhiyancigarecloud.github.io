@@ -260,3 +260,6 @@ body:has(.museum-menu[open]) {overflow:hidden;}
 .resource-list {list-style:none; margin:0; padding:0;}
 .resource-list li {padding:16px 0; overflow-wrap:anywhere;}
 .resource-list a {display:inline-block; padding:8px 0;}
+
+.resource-group {margin-top:24px;}
+.resource-group h3 {font-family:var(--ifm-font-family-base); font-size:15px; font-weight:500; color:var(--museum-mineral); margin:0 0 8px;}

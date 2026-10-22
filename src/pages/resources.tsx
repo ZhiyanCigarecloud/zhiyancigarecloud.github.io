@@ -4,12 +4,16 @@ import Link from '@docusaurus/Link';
 import {publicAccounts, webTools, type Resource} from '../data/resources';
 
 function ResourceSection({title, items}: {title: string; items: Resource[]}) {
+  const categories = [...new Set(items.map(item => item.category || ''))];
   return <section className="resource-section" aria-label={title}>
     <h2>{title}</h2>
-    {items.length ? <ul className="resource-list">{items.map(item => <li key={item.url}>
-      <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.title}（在新窗口打开）`}>{item.title}<span aria-hidden="true"> ↗</span></a>
-      {item.description && <p>{item.description}</p>}
-    </li>)}</ul> : <p className="resource-empty">暂未收录。</p>}
+    {items.length ? categories.map(category => <div className="resource-group" key={category}>
+      {category && <h3>{category}</h3>}
+      <ul className="resource-list">{items.filter(item => (item.category || '') === category).map(item => <li key={item.url}>
+        <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.title}（在新窗口打开）`}>{item.title}<span aria-hidden="true"> ↗</span></a>
+        {item.description && <p>{item.description}</p>}
+      </li>)}</ul>
+    </div>) : <p className="resource-empty">暂未收录。</p>}
   </section>;
 }
 
