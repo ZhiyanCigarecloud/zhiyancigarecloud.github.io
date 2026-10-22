@@ -9,6 +9,7 @@ import {paginate} from '../utils/pagination';
 import {selectCategory} from '../utils/categories';
 
 export function DateLabel({date = updated, label = '更新于'}: {date?: string; label?: string}) {
+  if (!date) return null;
   const [year, month, day] = date.slice(0, 10).split('-');
   return <span className="date-label">{label} <time dateTime={date}>{year}年{Number(month)}月{day ? `${Number(day)}日` : ''}</time></span>;
 }

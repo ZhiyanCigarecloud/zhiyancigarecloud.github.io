@@ -235,3 +235,11 @@ body {font-synthesis:none;}
 
 .contact-illustration {width:280px; max-width:100%; margin:40px auto 0;}
 .contact-illustration img {display:block; width:100%; height:auto; mix-blend-mode:darken;}
+
+.score-legend {font-size:16px; line-height:1.9; margin:0 0 24px; color:var(--museum-muted);}
+.harmonica-score {min-width:0; margin-bottom:32px;}
+.harmonica-score pre {font-family:var(--ifm-font-family-base); font-size:18px; line-height:2; background:var(--museum-surface) !important; color:var(--museum-night) !important; border:1px solid var(--museum-line); border-radius:0; white-space:pre; overflow-x:auto;}
+.harmonica-score pre code {font-family:inherit; font-size:inherit; line-height:inherit; white-space:pre;}
+@media(max-width:600px) {.harmonica-score pre {font-size:16px;} .score-legend {font-size:14px;}}
+
+.harmonica-score pre code span {color:inherit !important;}

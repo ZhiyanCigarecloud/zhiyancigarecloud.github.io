@@ -1,4 +1,5 @@
 export const hallCategories: Record<string, readonly string[]> = {
+  wild: ['口琴谱'],
   amber: ['小说', '诗歌'],
   fragments: ['影评', '感悟', '游记'],
 };

@@ -18,7 +18,7 @@
 | 展厅 | 内容 | 细分类 | 目录地址 | 内容文件夹 |
 | --- | --- | --- | --- | --- |
 | 地层馆 | 课内学习 | 暂无 | `/strata/` | `content/strata/` |
-| 野外馆 | 课外探索 | 暂无 | `/wild/` | `content/wild/` |
+| 野外馆 | 课外探索 | 口琴谱 | `/wild/` | `content/wild/` |
 | 琥珀馆 | 小说诗歌 | 小说、诗歌 | `/amber/` | `content/amber/` |
 | 碎屑馆 | 杂谈感悟 | 影评、感悟、游记 | `/fragments/` | `content/fragments/` |
 
@@ -75,7 +75,7 @@ hide_table_of_contents: true
 | `description` | 可选的一句话摘要。 |
 | `slug` | 唯一且稳定的文章地址片段，避免与其他文章重复。上述模板的正文地址是 `/collection/my-new-poem/`。 |
 | `museum_hall` | 填 `strata`、`wild`、`amber` 或 `fragments`。 |
-| `category` | 琥珀馆填“小说”或“诗歌”；碎屑馆填“影评”“感悟”或“游记”。地层馆、野外馆目前可省略。 |
+| `category` | 琥珀馆填“小说”或“诗歌”；碎屑馆填“影评”“感悟”或“游记”。野外馆填“口琴谱”；地层馆目前可省略。 |
 | `specimen` | 所属分类内的三位编号，使用引号保留前导零。模板编号只是示意，添加前应检查该分类已有编号。 |
 | `date` | 作品写作日期，使用带引号的 `YYYY-MM-DD`；只知道月份时可填 `YYYY-MM`。 |
 
@@ -84,6 +84,8 @@ hide_table_of_contents: true
 正文中的日期应与 `date` 一致，不用上传日期代替历史作品的写作日期。诗歌如需保留换行，每行末尾加两个空格；节与节之间留一空行，也可参考现有诗歌写法。
 
 目录示例：`/amber/?category=诗歌&page=2`。返回链接应指向文章所属的展厅和分类。
+
+口琴谱位于 `content/wild/`，一首一篇。谱面放在 `harmonica-score` 容器内的 `text` 代码块中，以保留空格、换行及升号；括号表示音区，`/` 表示和声。口琴谱按馆长要求不填写 `date`，不显示日期，六篇按提供顺序编号。
 
 ## 添加照片集
 
