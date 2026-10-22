@@ -20,7 +20,7 @@ export default function Contact() {
         <div className="contact-row"><dt>微信</dt><dd><span className="contact-value">zhiyan_a_dinosaur</span><button type="button" onClick={copyWechat}>复制微信号</button><span className="contact-status" role="status">{message}</span></dd></div>
         <div className="contact-row"><dt>邮箱</dt><dd><a href="mailto:yzhi35351@gmail.com">yzhi35351@gmail.com</a></dd></div>
       </dl>
-      <figure className="contact-illustration"><img src="/img/contact-dinosaur.jpg" alt="一只恐龙，头顶的对话框里是一面六色彩虹旗" width="1191" height="1321" decoding="async" /></figure>
+      <figure className="contact-illustration"><img src="/img/contact-dinosaur-complete.jpg" alt="一只恐龙，头顶的对话框里是一面六色彩虹旗" width="1190" height="1322" decoding="async" /></figure>
     </main>
   </Layout>;
 }
