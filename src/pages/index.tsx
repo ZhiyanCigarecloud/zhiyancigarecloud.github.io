@@ -3,8 +3,8 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useBrokenLinks from '@docusaurus/useBrokenLinks';
-import {CuratorTips, DateLabel} from '../components/Museum';
-import {curator} from '../data/museum';
+import {CuratorTips} from '../components/Museum';
+import {curator, updated} from '../data/museum';
 
 const cutsX = [0, 242, 485, 728, 971];
 const cutsY = [0, 404, 809, 1214, 1619];
@@ -27,12 +27,13 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow"><span className="opening-dot" aria-hidden="true" />心中有绿色，出门便是草</p>
           <h1 id="welcome-title"><span>纸烟的博物馆</span><span className="hero-title-accent">奇妙夜<span className="hero-title-star" aria-hidden="true">✳</span></span></h1>
-          <section className="curator-intro" id="curator" aria-labelledby="curator-title"><h2 id="curator-title">关于馆长</h2><p>{curator}</p><DateLabel /></section>
+          <section className="curator-intro" id="curator" aria-labelledby="curator-title"><h2 id="curator-title">关于馆长</h2><p>{curator}</p></section>
           <Link className="visit-button" to="/entrance/">开始漫游 <span aria-hidden="true">↗</span></Link>
           <CuratorTips />
         </div>
         <figure className="hero-exhibit"><div className="exhibit-label"><span>私人馆藏</span><span>持续生长中</span></div><SpecimenImage /><figcaption><span>一只叫纸烟的恐龙</span><span>文字的化石，时间的切片。</span></figcaption></figure>
       </section>
+      <aside className="home-update" aria-label="更新记录"><span>更新记录</span><time dateTime={updated}>{updated.replaceAll('-', '.')}</time><p>更新全站界面，优化手机阅读与分类导航。</p></aside>
     </main>
   </Layout>;
 }

@@ -245,3 +245,10 @@ body:has(.museum-menu[open]) {overflow:hidden;}
   .entrance-page {min-height:calc(100svh - 64px);}
 }
 @media (prefers-reduced-motion:reduce) {html {scroll-behavior:auto;} *,*::before,*::after {animation:none !important; transition:none !important;}}
+
+.home-update {max-width:1176px; margin:0 auto 24px; padding:16px 0; display:flex; align-items:baseline; flex-wrap:wrap; gap:8px 18px; border-top:1px solid var(--museum-line); color:var(--museum-muted); font-size:11px;}
+.home-update > span {color:var(--museum-mineral);}
+.home-update time {font-variant-numeric:tabular-nums;}
+.home-update p {margin:0; font-size:11px;}
+@media (max-width:1240px) {.home-update {margin-inline:32px;}}
+@media (max-width:600px) {.home-update {margin:0 24px 10px; gap:6px 14px;} .home-update p {flex-basis:100%;}}

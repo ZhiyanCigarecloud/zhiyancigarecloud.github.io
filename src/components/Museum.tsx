@@ -39,7 +39,7 @@ export function MuseumHeader() {
 }
 
 export function MuseumFooter() {
-  return <footer className="museum-footer"><span>© {new Date().getFullYear()} 纸烟的博物馆奇妙夜</span><span className="footer-note">收藏文字，也收藏时间。</span><DateLabel /></footer>;
+  return <footer className="museum-footer"><span>© {new Date().getFullYear()} 纸烟的博物馆奇妙夜</span><span className="footer-note">收藏文字，也收藏时间。</span></footer>;
 }
 
 export function CuratorTips() {
@@ -86,7 +86,7 @@ export function HallPage({hallId}: {hallId: HallId}) {
         {categories.length > 0 ? <nav className="archive-categories" aria-label={`${hall.title}文章分类`}>
           {categories.map(item => <Link key={item} to={pageUrl(1, item)} aria-current={category === item ? 'page' : undefined}>{item}</Link>)}
         </nav> : <span className="eyebrow">{hall.subject}</span>}
-        <h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p><DateLabel /></header>
+        <h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p></header>
       <div className="archive-section-heading"><h2>{category || hall.subject}</h2><span>共 {entries.length} 篇馆藏</span></div>
       <section className="archive-list" aria-label={`${hall.title}馆藏目录`}>
         {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="specimen-title">{item.category && !category && <span className="archive-category-label">{item.category} · </span>}{item.title}</span></Link><DateLabel date={item.date} label="" /><span className="archive-arrow" aria-hidden="true">↗</span></li>)}</ol> : <p className="empty-hall">{category ? `暂时还没有${category}，等待下一次发掘。` : '尚无馆藏，等待下一次发掘。'}</p>}
