@@ -22,18 +22,18 @@ function SpecimenImage() {
 export default function Home() {
   useBrokenLinks().collectAnchor('curator');
   return <Layout title="首页" description={curator}>
-    <main id="main-content" className="museum-home">
+    <main id="main-content" className="museum-home"><div className="hero-watermark" aria-hidden="true">奇妙夜</div>
       <section className="museum-hero" aria-labelledby="welcome-title">
         <div className="hero-copy">
           <p className="eyebrow"><span className="opening-dot" aria-hidden="true" />心中有绿色，出门便是草</p>
-          <h1 id="welcome-title"><span>纸烟的博物馆</span><span className="hero-title-accent">奇妙夜<span className="hero-title-star" aria-hidden="true">✳</span></span></h1>
+          <h1 id="welcome-title"><span>纸烟的博物馆</span><span className="hero-title-accent">奇妙夜</span></h1>
           <section className="curator-intro" id="curator" aria-labelledby="curator-title"><h2 id="curator-title">关于馆长</h2><p>{curator}</p></section>
           <Link className="visit-button" to="/entrance/">开始漫游 <span aria-hidden="true">↗</span></Link>
           <CuratorTips />
         </div>
         <figure className="hero-exhibit"><div className="exhibit-label"><span>私人馆藏</span><span>持续生长中</span></div><SpecimenImage /></figure>
       </section>
-      <aside className="home-update" aria-label="更新记录"><span>更新记录</span><time dateTime={updated}>{updated.replaceAll('-', '.')}</time><p>更新全站界面，优化手机阅读与分类导航。</p></aside>
+      <aside className="home-update" aria-label="更新记录"><span>更新记录</span><time dateTime={updated}>{updated.replaceAll('-', '.')}</time><p>重整页面视觉与排版，更新四馆及资源目录。</p></aside>
     </main>
   </Layout>;
 }

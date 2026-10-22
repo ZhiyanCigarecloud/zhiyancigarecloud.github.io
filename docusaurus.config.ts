@@ -43,7 +43,7 @@ const config: Config = {
       showLastUpdateTime: false,
     },
     blog: false,
-    theme: {customCss: './src/css/custom.css'},
+    theme: {customCss: ['./src/css/custom.css', './src/css/gallery.css']},
   } satisfies Options]],
   themeConfig: {
     colorMode: {defaultMode: 'light', disableSwitch: true, respectPrefersColorScheme: false},
