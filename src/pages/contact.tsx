@@ -18,7 +18,7 @@ export default function Contact() {
       <header className="resources-heading"><h1>找到我</h1></header>
       <dl className="contact-list">
         <div className="contact-row"><dt>微信</dt><dd><span className="contact-value">zhiyan_a_dinosaur</span><button type="button" onClick={copyWechat}>复制微信号</button><span className="contact-status" role="status">{message}</span></dd></div>
-        <div className="contact-row"><dt>邮箱</dt><dd><a href="mailto:Cigarecloud_wyf@sjtu.edu.cn">Cigarecloud_wyf@sjtu.edu.cn</a><a href="mailto:yzhi35351@gmail.com">yzhi35351@gmail.com</a></dd></div>
+        <div className="contact-row"><dt>邮箱</dt><dd><a href="mailto:yzhi35351@gmail.com">yzhi35351@gmail.com</a></dd></div>
       </dl>
     </main>
   </Layout>;
