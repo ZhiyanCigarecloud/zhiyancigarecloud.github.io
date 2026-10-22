@@ -11,5 +11,5 @@ export const webTools: Resource[] = [
   {title: 'Recraft', category: '生活', url: 'https://www.recraft.ai/', description: 'AI 视觉创作工具。'},
   {title: 'AMiner', category: '学习', url: 'https://www.aminer.cn/', description: '学术搜索与科研信息平台。'},
   {title: '菜鸟教程', category: '学习', url: 'https://www.runoob.com/', description: '中文编程学习网站。'},
-  {title: 'QueerEcho', category: '生活', url: 'https://queerecho.com/?tab=related', description: 'LGBTQ社群论坛'},
+  {title: 'QueerEcho', category: '生活', url: 'https://queerecho.com/?tab=related', description: 'LGBTQ社群论坛。'},
 ];
