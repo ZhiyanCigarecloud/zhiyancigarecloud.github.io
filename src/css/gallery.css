@@ -180,3 +180,39 @@ body {font-synthesis:none;}
 @media(max-width:600px) {.travel-photo-grid {grid-template-columns:minmax(0,1fr); gap:24px; margin-block:24px 32px;}}
 
 .theme-doc-markdown .album-date {font-size:13px; color:var(--museum-muted); text-align:right; margin:0 0 28px;}
+
+/* Desktop reading scale: supporting text must remain readable beside large artwork. */
+@media(min-width:821px) {
+ .museum-brand {font-size:18px;}
+ .desktop-navigation a {font-size:16px;}
+ .back-link {font-size:14px;}
+ .hero-copy > .eyebrow,.guide-heading .eyebrow {font-size:16px;}
+ .guide-heading h1 {font-size:clamp(36px,3.7vw,48px);}
+ .curator-intro {max-width:400px; grid-template-columns:84px minmax(0,1fr);}
+ .curator-intro h2 {font-size:14px;}
+ .curator-intro p {font-size:16px; line-height:1.9;}
+ .visit-button {font-size:16px;}
+ .exhibit-label,.hero-exhibit figcaption {font-size:13px;}
+ .home-update,.home-update p,.museum-footer {font-size:13px;}
+ .hall-subject,.hall-number {font-size:15px;}
+ .hall-card h2 {font-size:28px;}
+ .hall-card p {font-size:16px; line-height:1.9;}
+ .hall-card-bottom {gap:12px; padding-top:12px; flex-wrap:wrap;}
+ .hall-card-bottom a {font-size:16px;}
+ .hall-category-labels,.hall-count {font-size:14px;}
+ .hall-heading > p {font-size:16px; line-height:1.9;}
+ .archive-categories a {font-size:16px;}
+ .archive-section-heading h2 {font-size:16px;}
+ .archive-section-heading > span,.specimen-number,.date-label,.archive-category-label {font-size:14px;}
+ .archive-pagination {font-size:15px;}
+ .archive-pagination [aria-current=page] {font-size:14px;}
+ .resource-group h2 {font-size:18px;}
+ .resource-list a {font-size:22px;}
+ .resource-list p {font-size:16px; line-height:1.9;}
+ .resource-actions button {font-size:14px;}
+ .reader-path,.theme-doc-markdown .writing-date {font-size:14px;}
+ .theme-doc-markdown > p,.poem {font-size:18px;}
+ .article-page-direction,.article-page-end {font-size:14px;}
+ .article-page-title {font-size:18px;}
+ .travel-photo-grid figcaption,.theme-doc-markdown .album-date {font-size:14px;}
+}
