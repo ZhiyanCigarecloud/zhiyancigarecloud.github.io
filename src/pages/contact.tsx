@@ -12,7 +12,7 @@ export default function Contact() {
       setMessage('请选中微信号复制。');
     }
   };
-  return <Layout title="找到我" description="纸烟的联系方式。">
+  return <Layout title="找到我" description="纸烟的微信与邮箱联系方式。">
     <main id="main-content" className="reading-wrap contact-page">
       <Link to="/halls/" className="back-link">← 返回四馆简介</Link>
       <header className="resources-heading"><h1>找到我</h1></header>
