@@ -25,7 +25,7 @@ function ResourceItem({item}: {item: Resource}) {
 }
 
 function ResourceSection({title, items}: {title: string; items: Resource[]}) {
-  const categories = [...new Set(items.map(item => item.category || ''))];
+  const categories = Array.from(new Set(items.map(item => item.category || '')));
   return <section className="resource-section" aria-label={title}>
     <h2>{title}</h2>
     {items.length ? categories.map(category => <div className="resource-group" key={category}>
