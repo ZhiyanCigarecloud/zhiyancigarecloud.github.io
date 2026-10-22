@@ -24,6 +24,7 @@ export function MuseumHeader() {
       <Link to="/" aria-current={isHome ? 'page' : undefined}>首页</Link>
       <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>四馆简介</Link>
       <Link to="/resources/" aria-current={pathname === '/resources/' ? 'page' : undefined}>资源整合</Link>
+      <Link to="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>找到我</Link>
     </nav>
     <button className="menu-toggle" aria-label="打开导览菜单" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>导览 <span aria-hidden="true">☰</span></button>
     <dialog className="museum-menu" ref={dialog} aria-label="导览菜单" onClick={event => {if (event.target === dialog.current) close();}}>
@@ -33,6 +34,7 @@ export function MuseumHeader() {
           <Link to="/" onClick={close}>首页</Link>
           <Link to="/halls/" onClick={close}>四馆简介</Link>
           <Link to="/resources/" onClick={close}>资源整合</Link>
+          <Link to="/contact/" onClick={close}>找到我</Link>
         </nav>
       </div>
     </dialog></>}
