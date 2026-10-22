@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import {publicAccounts, webTools, type Resource} from '../data/resources';
+import {webTools, type Resource} from '../data/resources';
 
 function ResourceItem({item}: {item: Resource}) {
   const [message, setMessage] = useState('');
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(item.url);
-      setMessage('已复制，可粘贴到微信中打开。');
+      setMessage('已复制，可粘贴到浏览器中打开。');
     } catch {
       setMessage('请长按或选中下方链接复制。');
     }
@@ -36,11 +36,10 @@ function ResourceSection({title, items}: {title: string; items: Resource[]}) {
 }
 
 export default function Resources() {
-  return <Layout title="资源整合" description="收集公众号资源与网页工具。">
+  return <Layout title="资源整合" description="收集实用的网页工具。">
     <main id="main-content" className="reading-wrap resources-page">
       <Link to="/halls/" className="back-link">← 返回四馆简介</Link>
-      <header className="hall-heading"><h1>资源整合</h1><p>公众号资源与网页工具，收在这里。</p></header>
-      <ResourceSection title="公众号资源" items={publicAccounts} />
+      <header className="hall-heading"><h1>资源整合</h1><p>实用的网页工具，收在这里。</p></header>
       <ResourceSection title="网页工具" items={webTools} />
     </main>
   </Layout>;
