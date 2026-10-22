@@ -11,4 +11,5 @@ export const webTools: Resource[] = [
   {title: 'Recraft', category: '生活', url: 'https://www.recraft.ai/', description: 'AI 视觉创作工具，用于生成和编辑图片、插画与设计素材。'},
   {title: 'AMiner', category: '学习', url: 'https://www.aminer.cn/', description: '学术搜索与科研信息平台，可检索论文、查找学者并追踪研究动态。'},
   {title: '菜鸟教程', category: '学习', url: 'https://www.runoob.com/', description: '中文编程学习网站，提供多种编程语言、网页开发与数据库教程和示例。'},
+  {title: 'QueerEcho', category: '生活', url: 'https://queerecho.com/?tab=related'},
 ];
