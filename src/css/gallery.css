@@ -177,3 +177,5 @@ body {font-synthesis:none;}
 .travel-photo-grid img {display:block; width:100%; height:auto; background:var(--museum-line);}
 .travel-photo-grid figcaption {margin-top:8px; font-size:11px; color:var(--museum-muted); text-align:right; font-variant-numeric:tabular-nums;}
 @media(max-width:600px) {.travel-photo-grid {grid-template-columns:minmax(0,1fr); gap:24px; margin-block:24px 32px;}}
+
+.theme-doc-markdown .album-date {font-size:13px; color:var(--museum-muted); text-align:right; margin:0 0 28px;}

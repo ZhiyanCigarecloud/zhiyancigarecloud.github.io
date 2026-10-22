@@ -10,7 +10,7 @@ import {selectCategory} from '../utils/categories';
 
 export function DateLabel({date = updated, label = '更新于'}: {date?: string; label?: string}) {
   const [year, month, day] = date.slice(0, 10).split('-');
-  return <span className="date-label">{label} <time dateTime={date}>{year}年{Number(month)}月{Number(day)}日</time></span>;
+  return <span className="date-label">{label} <time dateTime={date}>{year}年{Number(month)}月{day ? `${Number(day)}日` : ''}</time></span>;
 }
 
 export function MuseumHeader() {
