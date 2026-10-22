@@ -17,7 +17,6 @@ export default function Halls() {
         <div className="hall-card-content"><div><h2>{hall.title}</h2><p>{hall.description}</p></div><HallArtwork hall={hall.id} /></div>
         <div className="hall-card-bottom"><div className="hall-category-labels">{(hallCategories[hall.id] || []).map(category => <span key={category}>{category}</span>)}</div><Link className="enter-hall" to={hall.href}>查看馆藏 <span aria-hidden="true">↗</span><span className="hall-count">{collections.filter(item => item.hall === hall.id).length} 篇</span></Link></div>
       </article>)}</div>
-      <div className="resources-entry"><Link to="/resources/">资源整合 <span aria-hidden="true">↗</span></Link></div>
     </main>
   </Layout>;
 }

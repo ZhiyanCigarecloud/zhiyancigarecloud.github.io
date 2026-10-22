@@ -253,8 +253,6 @@ body:has(.museum-menu[open]) {overflow:hidden;}
 @media (max-width:1240px) {.home-update {margin-inline:32px;}}
 @media (max-width:600px) {.home-update {margin:0 24px 10px; gap:6px 14px;} .home-update p {flex-basis:100%;}}
 
-.resources-entry {margin-top:28px; text-align:right;}
-.resources-entry a {display:inline-flex; align-items:center; gap:18px; min-height:44px; font-size:14px;}
 .resources-page {min-height:calc(100svh - 160px);}
 .resource-section {padding:24px 0; border-bottom:1px solid var(--museum-line);}
 .resource-section h2 {font-size:24px; margin:0 0 18px;}
