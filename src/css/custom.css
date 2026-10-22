@@ -263,3 +263,8 @@ body:has(.museum-menu[open]) {overflow:hidden;}
 
 .resource-group {margin-top:24px;}
 .resource-group h3 {font-family:var(--ifm-font-family-base); font-size:15px; font-weight:500; color:var(--museum-mineral); margin:0 0 8px;}
+
+.resource-actions {display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 20px;}
+.resource-actions button {border:1px solid var(--museum-line); background:transparent; color:var(--museum-mineral); border-radius:20px; min-height:44px; padding:6px 16px; font-size:12px;}
+.resource-copy-status:empty {display:none;}
+.resource-copy-url {width:100%; min-width:0; padding:10px; border:1px solid var(--museum-line); background:var(--museum-surface); color:var(--museum-night); font-size:12px;}
