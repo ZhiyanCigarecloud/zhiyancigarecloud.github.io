@@ -24,10 +24,10 @@ export default function Home() {
   return <Layout title="首页" description={curator}>
     <main id="main-content" className="museum-home">
       <section className="museum-cover" aria-labelledby="welcome-title">
-        <div className="cover-kicker"><p>心中有绿色，出门便是草</p><span>私人馆藏 · 持续生长中</span></div>
+        <div className="cover-kicker"><p>心中有绿色，出门便是草</p></div>
         <header className="cover-heading"><p>纸烟的博物馆</p><h1 id="welcome-title">奇妙夜</h1></header>
         <div className="cover-body">
-          <figure className="hero-exhibit"><SpecimenImage /><figcaption><span>恐龙化石</span><span>私人馆藏</span></figcaption></figure>
+          <figure className="hero-exhibit"><SpecimenImage /></figure>
           <div className="cover-notes">
             <section className="curator-intro" id="curator" aria-labelledby="curator-title"><h2 id="curator-title">关于馆长</h2><p>{curator}</p></section>
             <Link className="visit-button" to="/entrance/">开始漫游 <span aria-hidden="true">↗</span></Link>

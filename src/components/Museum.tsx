@@ -43,7 +43,7 @@ export function MuseumHeader() {
 }
 
 export function MuseumFooter() {
-  return <footer className="museum-footer"><span>© {new Date().getFullYear()} 纸烟的博物馆奇妙夜</span><span className="footer-note">收藏文字，也收藏时间。</span></footer>;
+  return <footer className="museum-footer"><span>© {new Date().getFullYear()} 纸烟的博物馆奇妙夜</span></footer>;
 }
 
 export function CuratorTips() {
