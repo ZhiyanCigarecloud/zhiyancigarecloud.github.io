@@ -25,6 +25,7 @@ function museumCollections(): Plugin {
 
 const config: Config = {
   title: '纸烟的博物馆奇妙夜',
+  favicon: 'img/brand-origami-rex.png',
   tagline: '一只叫纸烟的恐龙，在这里收藏学习、探索、小说诗歌与杂谈感悟。',
   url: 'https://zhiyancigarecloud.github.io',
   baseUrl: '/',
