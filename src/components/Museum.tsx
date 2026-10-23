@@ -20,7 +20,7 @@ export function MuseumHeader() {
   const {pathname} = useLocation();
   const isHome = pathname === '/';
   return <header className="museum-header">
-    <Link to="/" className="museum-brand" aria-label="纸烟的博物馆奇妙夜，返回首页"><span className="brand-mark" aria-hidden="true">纸</span><span>纸烟的博物馆<span className="brand-night">奇妙夜</span></span></Link>
+    <Link to="/" className="museum-brand" aria-label="纸烟的博物馆奇妙夜，返回首页">{isHome ? <svg className="home-brand-symbol" viewBox="0 0 52 42" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 30c8 0 10-9 21-9 4 0 7 2 10 1l2-13c.5-4 3-6 7-5l6 3c2 1 1 4-1 4h-6l-1 17-1 9h-5l-1-8-11-1-2 9h-5l1-10c-4 3-9 5-14 3Z"/><circle cx="43" cy="7.5" r="1" fill="var(--museum-paper)"/><path d="M24 24v5m5-4v5" stroke="var(--museum-paper)" strokeWidth="1.3" strokeLinecap="round"/></svg> : <span className="brand-mark" aria-hidden="true">纸</span>}<span>纸烟的博物馆<span className="brand-night">奇妙夜</span></span></Link>
     {!isHome && <><nav className="desktop-navigation" aria-label="主要导航">
       <Link to="/" aria-current={isHome ? 'page' : undefined}>首页</Link>
       <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>四馆简介</Link>

@@ -11,7 +11,7 @@ export default function Halls() {
   return <Layout title="四馆简介" description="地层馆、野外馆、琥珀馆、碎屑馆。从任意一处，开始漫游。">
     <main id="main-content" className="halls-page section-wrap">
       <Link to="/" className="back-link">← 返回首页</Link>
-      <header className="guide-heading"><p className="eyebrow">私人馆藏</p><h1>四馆简介</h1></header>
+      <header className="guide-heading"><h1>四馆简介</h1></header>
       <div className="hall-grid">{halls.map((hall, index) => <article className="hall-card" data-hall={hall.id} key={hall.id}>
         <div className="hall-visual">
           <div className="hall-card-top"><span className="hall-subject">{hall.subject}</span><span className="hall-number">0{index + 1}</span></div>
