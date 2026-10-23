@@ -172,5 +172,5 @@ npm run build
 
 ## 入馆动画与互动小记
 
-- **入馆 GIF：** 已启用六块紫色纸片拼成霸王龙的单次动画（`static/img/entrance-puzzle.gif`，3.4 秒）。点击“开始漫游”后播放，加载完成约 3.65 秒后进入四馆简介；支持跳过，图片加载失败或系统偏好减少动态效果时直接入馆。`src/data/museum.ts` 的 `entrance` 设置地址和时长。动画源代码在 `scripts/create-entrance-gif.py`，使用 Pillow 可重新导出。
+- **入馆动画：** 点击“开始漫游”后，首页原化石图分为 16 块带凹凸接口的拼图，散开淡出，1.2 秒后进入四馆简介。可跳过，减少动态效果时直接入馆；旧 `/entrance/` 地址同样使用化石拼图。动画组件与时长在 `src/components/FossilPuzzle.tsx`，样式在 `src/css/gallery.css`。旧折纸 GIF 仅作为历史素材保留。
 - **互动小记：** `tips` 当前为空数组，页面不展示占位。提供专用文案后，可填入 `{text: '文案', date: '2026-10-22'}`，组件支持循环切换。文章正文不作为小记内容。

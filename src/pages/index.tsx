@@ -1,25 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import {useHistory} from '@docusaurus/router';
 import useBrokenLinks from '@docusaurus/useBrokenLinks';
 import {CuratorTips} from '../components/Museum';
 import {curator, updated} from '../data/museum';
-
-const cutsX = [0, 242, 485, 728, 971];
-const cutsY = [0, 404, 809, 1214, 1619];
-
-function SpecimenImage() {
-  const assetRoot = useBaseUrl('/img/');
-  return <div className="specimen-picture" role="img" aria-label="旧纸与蓝色拓印拼贴中的恐龙化石">
-    <div className="specimen-image">{Array.from({length: 16}, (_, index) => {
-      const column = index % 4, row = Math.floor(index / 4);
-      return <img key={index} src={`${assetRoot}specimen-${String(index + 1).padStart(2, '0')}.jpg`} alt="" width={cutsX[column + 1] - cutsX[column]} height={cutsY[row + 1] - cutsY[row]} loading={index < 8 ? 'eager' : 'lazy'} decoding="async" style={{left: `${cutsX[column] / 971 * 100}%`, top: `${cutsY[row] / 1619 * 100}%`, width: `${(cutsX[column + 1] - cutsX[column]) / 971 * 100}%`, height: `${(cutsY[row + 1] - cutsY[row]) / 1619 * 100}%`}} />;
-    })}</div>
-  </div>;
-}
+import FossilPuzzle, {FOSSIL_EXIT_MS} from '../components/FossilPuzzle';
 
 export default function Home() {
+  const history = useHistory();
+  const [leaving, setLeaving] = useState(false);
+  useEffect(() => {
+    if (!leaving) return;
+    const timer = window.setTimeout(() => history.push('/halls/'), FOSSIL_EXIT_MS);
+    return () => window.clearTimeout(timer);
+  }, [leaving, history]);
+  function enter(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    event.preventDefault();
+    setLeaving(true);
+  }
   useBrokenLinks().collectAnchor('curator');
   return <Layout title="首页" description={curator}>
     <main id="main-content" className="museum-home"><div className="hero-watermark" aria-hidden="true">奇妙夜</div>
@@ -28,10 +29,11 @@ export default function Home() {
           <p className="eyebrow"><span className="opening-dot" aria-hidden="true" />心中有绿色，出门便是草</p>
           <h1 id="welcome-title"><span>纸烟的博物馆</span><span className="hero-title-accent">奇妙夜</span></h1>
           <section className="curator-intro" id="curator" aria-labelledby="curator-title"><h2 id="curator-title">关于馆长</h2><p>{curator}</p></section>
-          <Link className="visit-button" to="/entrance/">开始漫游 <span aria-hidden="true">↗</span></Link>
+          <Link className="visit-button" to="/halls/" onClick={enter} aria-disabled={leaving}>{leaving ? '正在入馆…' : '开始漫游'} <span aria-hidden="true">↗</span></Link>
+          {leaving && <Link className="fossil-skip" to="/halls/">跳过动画 →</Link>}
           <CuratorTips />
         </div>
-        <figure className="hero-exhibit"><SpecimenImage /></figure>
+        <figure className="hero-exhibit"><FossilPuzzle leaving={leaving} /></figure>
       </section>
       <aside className="home-update" aria-label="更新记录"><span>更新记录</span><time dateTime={updated}>{updated.replaceAll('-', '.')}</time><p>恢复首页布局，保留馆藏与阅读页面的新排版。</p></aside>
     </main>

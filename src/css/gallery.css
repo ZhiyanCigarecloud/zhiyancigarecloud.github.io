@@ -325,8 +325,21 @@ body:has(.museum-home) .visit-button,body:has(.museum-home) .visit-button > span
 /* Give the flat logo a paper backdrop inside the header stacking context. */
 .museum-header .museum-brand {background-color:var(--museum-paper);}
 
-/* The single-play puzzle assembles before automatically entering the halls. */
+/* The fossil separates into interlocking pieces before entry. */
 .entrance-page {min-height:calc(100svh - 96px); background-color:var(--museum-paper); gap:24px;}
 .entrance-animation {width:min(640px,100%); height:auto; max-height:64svh;}
 .entrance-controls {font-size:16px;}
 @media(max-width:600px) {.entrance-page {min-height:calc(100svh - 72px); padding:24px 16px;} .entrance-controls {font-size:14px;}}
+.fossil-puzzle .specimen-image {height:auto; overflow:visible;}
+.fossil-piece {opacity:0; transform-box:fill-box; transform-origin:center;}
+.fossil-puzzle.is-leaving {background:transparent !important;}
+.is-leaving .fossil-whole {visibility:hidden;}
+.is-leaving .fossil-piece {opacity:1; animation:fossil-scatter 900ms cubic-bezier(.4,0,.8,.45) var(--piece-delay) both;}
+@keyframes fossil-scatter {
+  0% {opacity:1; transform:translate(0,0) rotate(0) scale(1);}
+  25% {opacity:1;}
+  100% {opacity:0; transform:translate(var(--piece-x),var(--piece-y)) rotate(var(--piece-turn)) scale(.86);}
+}
+.fossil-skip {display:inline-block; margin-top:12px; font-size:13px; color:var(--museum-muted);}
+.entrance-page .fossil-puzzle {width:min(540px,100%); height:min(64svh,560px); border:0; border-radius:0; box-shadow:none;}
+@media(prefers-reduced-motion:reduce) {.is-leaving .fossil-piece {animation:none; opacity:0;}}
