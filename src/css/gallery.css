@@ -343,3 +343,15 @@ body:has(.museum-home) .visit-button,body:has(.museum-home) .visit-button > span
 .fossil-skip {display:inline-block; margin-top:12px; font-size:13px; color:var(--museum-muted);}
 .entrance-page .fossil-puzzle {width:min(540px,100%); height:min(64svh,560px); border:0; border-radius:0; box-shadow:none;}
 @media(prefers-reduced-motion:reduce) {.is-leaving .fossil-piece {animation:none; opacity:0;}}
+
+/* A quiet mineral-purple ripple and a small, reversible press response. */
+.museum-click-ripple {position:fixed; z-index:9999; width:32px; height:32px; border:1px solid #6f5aa8; border-radius:50%; background:radial-gradient(circle,transparent 45%,#6f5aa818 100%); pointer-events:none; user-select:none;}
+:where(button, .visit-button, .hall-card-bottom a, .resource-actions a, .archive-list li > a, .desktop-navigation a, .contact-row a, .pagination-nav__link) {transition:scale 140ms ease-out;}
+:where(button, .visit-button, .hall-card-bottom a, .resource-actions a, .archive-list li > a, .desktop-navigation a, .contact-row a, .pagination-nav__link):not(:disabled):not([aria-disabled=true]):active {scale:.975;}
+.hall-card:has(a:active) .hall-artwork {scale:.985;}
+.hall-artwork {transition:transform 200ms ease,scale 140ms ease-out;}
+@media(prefers-reduced-motion:reduce) {
+  .museum-click-ripple {display:none;}
+  :where(button, .visit-button, .hall-card-bottom a, .resource-actions a, .archive-list li > a, .desktop-navigation a, .contact-row a, .pagination-nav__link), .hall-artwork {transition:none;}
+  :where(button, .visit-button, .hall-card-bottom a, .resource-actions a, .archive-list li > a, .desktop-navigation a, .contact-row a, .pagination-nav__link):active, .hall-card:has(a:active) .hall-artwork {scale:1;}
+}
