@@ -7,6 +7,7 @@ import {useLocation, useHistory} from '@docusaurus/router';
 import {usePluginData} from '@docusaurus/useGlobalData';
 import {halls, tips, updated, type HallId} from '../data/museum';
 import {paginate} from '../utils/pagination';
+import ThemeToggle from './ThemeToggle';
 import {selectCategory} from '../utils/categories';
 
 export function DateLabel({date = updated, label = '更新于'}: {date?: string; label?: string}) {
@@ -41,6 +42,7 @@ export function MuseumHeader() {
         </nav>
       </div>
     </dialog></>}
+    <ThemeToggle />
   </header>;
 }
 

@@ -47,7 +47,7 @@ const config: Config = {
     theme: {customCss: ['./src/css/custom.css', './src/css/gallery.css']},
   } satisfies Options]],
   themeConfig: {
-    colorMode: {defaultMode: 'light', disableSwitch: true, respectPrefersColorScheme: false},
+    colorMode: {defaultMode: 'light', disableSwitch: false, respectPrefersColorScheme: true},
     navbar: {title: '纸烟的博物馆奇妙夜', items: []},
     footer: {style: 'light', links: []},
     metadata: [{name: 'theme-color', content: '#f1e6d2'}],
