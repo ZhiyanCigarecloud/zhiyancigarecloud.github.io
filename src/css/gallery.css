@@ -402,3 +402,9 @@ html[data-theme=dark] .museum-click-ripple {border-color:var(--museum-mineral); 
   .museum-header .brand-night {display:none;}
   .museum-header .museum-brand {font-size:13px; gap:8px;}
 }
+
+/* Give the collection entry a larger label and touch target. */
+.hall-card-bottom .enter-hall {font-size:22px; min-height:56px; padding:8px 4px; gap:12px; line-height:1.5;}
+.enter-hall > span[aria-hidden] {font-size:24px;}
+.enter-hall .hall-count {font-size:16px; color:var(--museum-muted); white-space:nowrap;}
+@media(max-width:600px) {.hall-card-bottom .enter-hall {font-size:20px;} .enter-hall > span[aria-hidden] {font-size:22px;}}
