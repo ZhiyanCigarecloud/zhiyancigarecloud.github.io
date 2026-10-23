@@ -321,3 +321,6 @@ body:has(.museum-home) .visit-button,body:has(.museum-home) .visit-button > span
 
 .museum-brand-symbol {display:block; flex-shrink:0; width:44px; height:44px; object-fit:contain; mix-blend-mode:multiply;}
 @media(max-width:600px) {.museum-brand-symbol {width:36px; height:36px;}}
+
+/* Give the flat logo a paper backdrop inside the header stacking context. */
+.museum-header .museum-brand {background-color:var(--museum-paper);}
