@@ -170,7 +170,7 @@ npm run build
 - **新文章没出现：** 检查所属展厅、分类、日期和编号，确认没有设置 `unlisted: true`，再看 Actions 是否报错。
 - **构建因链接失败：** 检查 `slug` 和返回链接；站点配置会将失效链接作为构建错误。
 
-## 尚未启用的内容
+## 入馆动画与互动小记
 
-- **入馆 GIF：** 放入 `static/img/`，在 `src/data/museum.ts` 的 `entrance` 中填写 `src` 和 `durationMs`。GIF 没有播放结束事件，需填写实际单次时长；计时从图片加载后开始，也支持跳过。
+- **入馆 GIF：** 已启用六块紫色纸片拼成霸王龙的单次动画（`static/img/entrance-puzzle.gif`，3.4 秒）。点击“开始漫游”后播放，加载完成约 3.65 秒后进入四馆简介；支持跳过，图片加载失败或系统偏好减少动态效果时直接入馆。`src/data/museum.ts` 的 `entrance` 设置地址和时长。动画源代码在 `scripts/create-entrance-gif.py`，使用 Pillow 可重新导出。
 - **互动小记：** `tips` 当前为空数组，页面不展示占位。提供专用文案后，可填入 `{text: '文案', date: '2026-10-22'}`，组件支持循环切换。文章正文不作为小记内容。

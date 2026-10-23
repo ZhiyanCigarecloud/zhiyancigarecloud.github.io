@@ -14,4 +14,4 @@ export const tips: {text: string; date: string}[] = [];
 
 // 收到 GIF 后填入以 / 开头的地址和单次播放时长。计时从图片加载完成后开始。
 // GIF 无 ended 事件，需要按素材的实际帧时长填写 durationMs。
-export const entrance: {src: string | null; durationMs: number} = {src: null, durationMs: 0};
+export const entrance: {src: string | null; durationMs: number} = {src: '/img/entrance-puzzle.gif', durationMs: 3650};

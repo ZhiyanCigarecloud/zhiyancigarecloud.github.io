@@ -324,3 +324,9 @@ body:has(.museum-home) .visit-button,body:has(.museum-home) .visit-button > span
 
 /* Give the flat logo a paper backdrop inside the header stacking context. */
 .museum-header .museum-brand {background-color:var(--museum-paper);}
+
+/* The single-play puzzle assembles before automatically entering the halls. */
+.entrance-page {min-height:calc(100svh - 96px); background-color:var(--museum-paper); gap:24px;}
+.entrance-animation {width:min(640px,100%); height:auto; max-height:64svh;}
+.entrance-controls {font-size:16px;}
+@media(max-width:600px) {.entrance-page {min-height:calc(100svh - 72px); padding:24px 16px;} .entrance-controls {font-size:14px;}}
