@@ -129,7 +129,7 @@ hide_table_of_contents: true
 | 构建、站点地址和文章元数据收集 | `docusaurus.config.ts` |
 | GitHub Actions 发布流程 | `.github/workflows/deploy.yml` |
 
-`gallery.css` 在 `custom.css` 之后加载。网站使用米黄色纸张背景、矿物紫细节，四馆分别使用褐、绿、琥珀、化石灰。全站使用汇文明朝体，联系方式页表情包通过 CSS 混合模式与页面底色衔接。
+`gallery.css` 在 `custom.css` 之后加载。当前设计采用旧纸档案与书刊排版：首页以深蓝刊头和化石首图组成封面，四馆简介使用双列展览目录，文章页收窄阅读宽度并统一文字层级。保留米黄色纸张背景、矿物紫细节，以及四馆的褐、绿、琥珀、化石灰。全站使用汇文明朝体，联系方式页表情包通过 CSS 混合模式与页面底色衔接。
 
 添加网页工具时，在 `src/data/resources.ts` 的 `webTools` 数组中增加一项，`category` 填“学习”或“生活”，简介尽量简短并以句号结尾。
 
