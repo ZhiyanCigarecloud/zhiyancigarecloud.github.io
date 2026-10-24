@@ -438,3 +438,8 @@ html[data-theme=dark] .museum-click-ripple {border-color:var(--museum-mineral); 
   body, .desktop-navigation a::after, .enter-hall > span[aria-hidden], .archive-arrow, .hall-artwork, .museum-theme-toggle svg {transition:none;}
   .hall-card:hover .hall-artwork, .hall-card:focus-within .hall-artwork, .enter-hall:hover > span[aria-hidden], .enter-hall:focus-visible > span[aria-hidden], .archive-list li > a:hover .archive-arrow, .museum-theme-toggle:hover svg {transform:none;}
 }
+
+.theme-doc-markdown .article-word-count {font-size:13px; line-height:1.8; color:var(--museum-muted); margin:0 0 30px; font-variant-numeric:tabular-nums;}
+.theme-doc-markdown .writing-date:has(+ .article-word-count) {margin-bottom:10px; padding-bottom:0; border-bottom:0;}
+.theme-doc-markdown .writing-date + .article-word-count {padding-bottom:22px; border-bottom:1px solid var(--museum-line);}
+@media(max-width:600px) {.theme-doc-markdown .article-word-count {font-size:12px; margin-bottom:24px;}}

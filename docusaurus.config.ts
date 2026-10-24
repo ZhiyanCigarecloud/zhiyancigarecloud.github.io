@@ -1,4 +1,5 @@
 import type {Config, Plugin} from '@docusaurus/types';
+import remarkWordCount from './src/utils/wordCount';
 import type {Options, ThemeConfig} from '@docusaurus/preset-classic';
 import type {LoadedContent} from '@docusaurus/plugin-content-docs';
 
@@ -38,6 +39,7 @@ const config: Config = {
   presets: [['classic', {
     docs: {
       path: 'content',
+      remarkPlugins: [remarkWordCount],
       routeBasePath: 'collection',
       sidebarPath: false,
       showLastUpdateAuthor: false,
