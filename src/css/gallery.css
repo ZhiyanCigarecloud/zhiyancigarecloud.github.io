@@ -408,3 +408,33 @@ html[data-theme=dark] .museum-click-ripple {border-color:var(--museum-mineral); 
 .enter-hall > span[aria-hidden] {font-size:24px;}
 .enter-hall .hall-count {font-size:16px; color:var(--museum-muted); white-space:nowrap;}
 @media(max-width:600px) {.hall-card-bottom .enter-hall {font-size:20px;} .enter-hall > span[aria-hidden] {font-size:22px;}}
+
+/* Short, staggered arrivals keep the museum calm and readable. */
+@keyframes museum-arrive {from {opacity:.25; translate:0 12px;} to {opacity:1; translate:0 0;}}
+@media(prefers-reduced-motion:no-preference) {
+  .hero-copy > *, .hero-exhibit, .guide-heading, .hall-card, .hall-heading, .archive-list li, .resource-group, .contact-row, .theme-doc-markdown {animation:museum-arrive 480ms cubic-bezier(.2,.7,.3,1) both;}
+  .hero-copy > :nth-child(2), .hall-card:nth-child(2), .contact-row:nth-child(2) {animation-delay:60ms;}
+  .hero-copy > :nth-child(3), .hall-card:nth-child(3), .contact-row:nth-child(3) {animation-delay:110ms;}
+  .hero-copy > :nth-child(4), .hall-card:nth-child(4), .contact-row:nth-child(4), .hero-exhibit {animation-delay:160ms;}
+  .archive-list li:nth-child(2) {animation-delay:35ms;}
+  .archive-list li:nth-child(3) {animation-delay:70ms;}
+  .archive-list li:nth-child(n+4) {animation-delay:100ms;}
+  body {transition:background-color 260ms ease,color 260ms ease;}
+}
+.desktop-navigation a::after {content:''; position:absolute; left:0; right:0; bottom:4px; height:1px; background:var(--museum-mineral); transform:scaleX(0); transform-origin:left; transition:transform 200ms ease;}
+.desktop-navigation a[aria-current=page]::after, .desktop-navigation a:hover::after, .desktop-navigation a:focus-visible::after {transform:scaleX(1);}
+.enter-hall > span[aria-hidden], .archive-arrow {display:inline-block; transition:transform 220ms ease;}
+.enter-hall:focus-visible > span[aria-hidden] {transform:translate(3px,-3px);}
+.hall-artwork {transition:transform 360ms cubic-bezier(.2,.7,.3,1),scale 140ms ease-out;}
+.museum-theme-toggle svg {transition:transform 300ms ease;}
+@media(hover:hover) and (pointer:fine) {
+  .hall-card:hover .hall-artwork, .hall-card:focus-within .hall-artwork {transform:translateY(-8px) rotate(-2deg) scale(1.035);}
+  .enter-hall:hover > span[aria-hidden] {transform:translate(4px,-4px);}
+  .archive-list li > a:hover .archive-arrow {transform:translateX(5px);}
+  .museum-theme-toggle:hover svg {transform:rotate(25deg);}
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero-copy > *, .hero-exhibit, .guide-heading, .hall-card, .hall-heading, .archive-list li, .resource-group, .contact-row, .theme-doc-markdown {animation:none; translate:none;}
+  body, .desktop-navigation a::after, .enter-hall > span[aria-hidden], .archive-arrow, .hall-artwork, .museum-theme-toggle svg {transition:none;}
+  .hall-card:hover .hall-artwork, .hall-card:focus-within .hall-artwork, .enter-hall:hover > span[aria-hidden], .enter-hall:focus-visible > span[aria-hidden], .archive-list li > a:hover .archive-arrow, .museum-theme-toggle:hover svg {transform:none;}
+}
