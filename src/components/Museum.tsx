@@ -28,7 +28,7 @@ export function MuseumHeader() {
       <Link to="/" aria-current={isHome ? 'page' : undefined}>首页</Link>
       <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>四馆简介</Link>
       <Link to="/resources/" aria-current={pathname === '/resources/' ? 'page' : undefined}>资源整合</Link>
-      <Link to="/other" aria-current={pathname === '/other' ? 'page' : undefined}>其他</Link>
+      <Link to="/ohe/r" aria-current={pathname === '/other' ? 'page' : undefined}>其他</Link>
       <Link to="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>找到我</Link>
     </nav>
     <button className="menu-toggle" aria-label="打开游览菜单" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>导览 <span aria-hidden="true">☰</span></button>
@@ -109,3 +109,4 @@ export function LegacyRedirect({to}: {to: string}) {
   useEffect(() => {history.replace(to);}, [history, to]);
   return <Layout title="继续漫游"><main className="reading-wrap"><Link to={to}>继续漫游 →</Link></main></Layout>;
 }
+export type Collection = { id: string; title: string; description: string; href: string; hall: string; category: string; specimen: string; date: string; }; export function useCollections() { return usePluginData('museum-collections') as Collection[]; }
