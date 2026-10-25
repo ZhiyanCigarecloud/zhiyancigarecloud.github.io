@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 const jellyOcean = {
   title: '果冻海 / Jelly Ocean',
   url: 'https://jellyocean.yzhi35351.workers.dev/',
-  description: '一片可以拖动、松手回弹的 3D 果冻海。看看冰山、企鹅和行驶的小船，也可以切换极光背景。',
+  description: '一片可以触碰的极光果冻海。',
 };
 
 export default function Other() {
