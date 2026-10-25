@@ -27,7 +27,8 @@ export function MuseumHeader() {
     {!isHome && <><nav className="desktop-navigation" aria-label="主要导航">
       <Link to="/" aria-current={isHome ? 'page' : undefined}>首页</Link>
       <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>四馆简介</Link>
-      <Link to="/resources/" aria-current={pathname === '/resources/' ? 'page' : undefined}>资源整合</Link>
+      <Link to="/resources/" aria-current={pathname === '/resources/' ? 'page' : undefined}
+          <Link to="/other" aria-current={pathname === '/other' ? 'page' : undefined}>其他</Link>>资源整合</Link>
       <Link to="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>找到我</Link>
     </nav>
     <button className="menu-toggle" aria-label="打开导览菜单" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>导览 <span aria-hidden="true">☰</span></button>
@@ -38,6 +39,7 @@ export function MuseumHeader() {
           <Link to="/" onClick={close}>首页</Link>
           <Link to="/halls/" onClick={close}>四馆简介</Link>
           <Link to="/resources/" onClick={close}>资源整合</Link>
+          <Link to="/other" onClick={close}>其他</Link>
           <Link to="/contact/" onClick={close}>找到我</Link>
         </nav>
       </div>
