@@ -28,7 +28,7 @@ export function MuseumHeader() {
       <Link to="/" aria-current={isHome ? 'page' : undefined}>首页</Link>
       <Link to="/halls/" aria-current={pathname === '/halls/' ? 'page' : undefined}>四馆简介</Link>
       <Link to="/resources/" aria-current={pathname === '/resources/' ? 'page' : undefined}>资源整合</Link>
-      <Link to="/ohe/r" aria-current={pathname === '/other' ? 'page' : undefined}>其他</Link>
+      <Link to="/other/" aria-current={pathname === '/other/' ? 'page' : undefined}>其他</Link>
       <Link to="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>找到我</Link>
     </nav>
     <button className="menu-toggle" aria-label="打开游览菜单" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>导览 <span aria-hidden="true">☰</span></button>
@@ -39,7 +39,7 @@ export function MuseumHeader() {
           <Link to="/" onClick={close}>首页</Link>
           <Link to="/halls/" onClick={close}>四馆简介</Link>
           <Link to="/resources/" onClick={close}>资源整合</Link>
-          <Link to="/other" onClick={close}>其他</Link>
+          <Link to="/other/" onClick={close}>其他</Link>
           <Link to="/contact/" onClick={close}>找到我</Link>
         </nav>
       </div>
@@ -55,20 +55,26 @@ export function MuseumFooter() {
 export function CuratorTips() {
   const [index, setIndex] = useState(0);
   const tip = tips[index];
-  return <div className="curator-tips" aria-label="馆长特别叮嘱"><p>{tip}</p><button type="button" onClick={() => setIndex((index + 1) % tips.length)}>换一条叮嘱</button></div>;
+  if (!tip) return null;
+  return <aside className="curator-tips" aria-label="馆长小记">
+    <div className="tips-label"><span>馆长小记</span><span aria-hidden="true">{index + 1} / {tips.length}</span></div>
+    <p aria-live="polite" aria-atomic="true">{tip.text}</p>
+    <div className="tips-bottom"><DateLabel date={tip.date} /><button type="button" onClick={() => setIndex(current => (current + 1) % tips.length)} disabled={tips.length < 2}>换一条 ↻</button></div>
+  </aside>;
+}
+
+export type Collection = {id: string; title: string; description: string; href: string; hall: string; category: string; specimen: string; date: string};
+export function useCollections() {
+  return usePluginData('museum-collections') as Collection[];
 }
 
 export function HallPage({hallId}: {hallId: HallId}) {
-  const hall = halls[hallId];
-  const isBrowser = useIsBrowser();
+  const hall = halls.find(item => item.id === hallId)!;
   const {search} = useLocation();
-  const params = new URLSearchParams(search);
-  const categories = Object.keys(hall.categories ?? {});
-  const categoryParam = params.get('category');
-  const category = selectCategory(categories, categoryParam);
-  const rawPage = Number(params.get('page') ?? '1');
-  const entries = category ? (hall.categories?.[category] ?? []) : hall.entries;
-  const {page, totalPages, items} = paginate(entries, rawPage);
+  const isBrowser = useIsBrowser();
+  const params = new URLSearchParams(isBrowser ? search : '');
+  const {categories, category, entries} = selectCategory(useCollections(), hallId, params.get('category'));
+  const {page, totalPages, items} = paginate(entries, params.get('page'));
   const heading = useRef<HTMLHeadingElement>(null);
   const firstRender = useRef(true);
   useEffect(() => {
@@ -93,7 +99,7 @@ export function HallPage({hallId}: {hallId: HallId}) {
         <h1 ref={heading} tabIndex={-1}>{hall.title}</h1><p>{hall.description}</p></header>
       <div className="archive-section-heading"><h2>{category || hall.subject}</h2><span>共 {entries.length} 篇馆藏</span></div>
       <section className="archive-list" aria-label={`${hall.title}馆藏目录`}>
-        {items.length > 0 ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">#{item.id}</span><strong>{item.title}</strong></Link><DateLabel date={item.date} /></li>)}</ol> : <p className="empty-notice">没有找到任何馆藏记录。</p>}
+        {items.length ? <ol>{items.map(item => <li key={item.id}><Link to={item.href}><span className="specimen-number">{item.specimen}</span><span className="specimen-title">{item.category && !category && <span className="archive-category-label">{item.category} · </span>}{item.title}</span></Link><DateLabel date={item.date} label="" /><span className="archive-arrow" aria-hidden="true">↗</span></li>)}</ol> : <p className="empty-hall">{category ? `暂时还没有${category}，等待下一次发掘。` : '尚无馆藏，等待下一次发掘。'}</p>}
       </section>
       {entries.length > 0 && <nav className="archive-pagination" aria-label="馆藏目录分页">
         {page > 1 ? <Link rel="prev" to={pageUrl(page - 1)}>← 上一页</Link> : <span aria-disabled="true">← 上一页</span>}
@@ -109,4 +115,3 @@ export function LegacyRedirect({to}: {to: string}) {
   useEffect(() => {history.replace(to);}, [history, to]);
   return <Layout title="继续漫游"><main className="reading-wrap"><Link to={to}>继续漫游 →</Link></main></Layout>;
 }
-export type Collection = { id: string; title: string; description: string; href: string; hall: string; category: string; specimen: string; date: string; }; export function useCollections() { return usePluginData('museum-collections') as Collection[]; }

@@ -1,4 +1,60 @@
 import React, {useState} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-export type Resource = { title: string; url: string; description?: string; category?: string; }; const otherResources: Resource[] = [{ title: '果冻海 / Jelly Ocean', category: 'vibe coding', url: 'https://jellyocean.yzhi35351.workers.dev/', description: '极地群岛、拖动海面·松手回弹、海洋控制、下载 3D 模型·GLB' }]; function ResourceItem({item}: {item: Resource}) { const [message, setMessage] = useState(''); const copyLink = async () => { try { await navigator.clipboard.writeText(item.url); setMessage('已复制，可粘贴到浏览器中打开。'); } catch { setMessage('请长按或选中下方链接复制。'); } }; return ( <li> <div className="resource-actions"> <a href={item.url}>{item.title}<span aria-hidden="true"> ↗</span></a> <button type="button" onClick={copyLink} aria-label={`复制${item.title}的链接`}>复制链接</button> </div> {item.description && <p>{item.description}</p>} <p className="resource-copy-status" role="status">{message}</p> {message === '请长按或选中下方链接复制。' && <input className="resource-copy-url" aria-label={`${item.title}的链接`} readOnly value={item.url} />} </li> ); } function ResourceSection({items}: {items: Resource[]}) { const categories = Array.from(new Set(items.map(item => item.category || ''))); return ( <section className="resource-section" aria-label="资源分类"> {items.length ? categories.map(category => ( <div className="resource-group" key={category}> {category && <h2>{category}</h2>} <ul className="resource-list"> {items.filter(item => (item.category || '') === category).map(item => <ResourceItem key={item.url} item={item} />)} </ul> </div> )) : <p className="resource-empty">暂未收录。</p>} </section> ); } export default function Other() { return ( <Layout title="其他" description="其他分类资源。"> <main id="main-content" className="reading-wrap resources-page"> <Link to="/halls" className="back-link">← 返回四馆简介</Link> <header className="resources-heading"><h1>其他</h1></header> <ResourceSection items={otherResources} /> </main> </Layout> ); }
+
+const jellyOcean = {
+  title: '果冻海 / Jelly Ocean',
+  url: 'https://jellyocean.yzhi35351.workers.dev/',
+  description: '一片可以拖动、松手回弹的 3D 果冻海。看看冰山、企鹅和行驶的小船，也可以切换极光背景。',
+};
+
+export default function Other() {
+  const [message, setMessage] = useState('');
+  const [showCopyUrl, setShowCopyUrl] = useState(false);
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(jellyOcean.url);
+      setShowCopyUrl(false);
+      setMessage('已复制，可粘贴到浏览器中打开。');
+    } catch {
+      setShowCopyUrl(true);
+      setMessage('请长按或选中下方链接复制。');
+    }
+  };
+
+  return (
+    <Layout title="其他" description="收录 vibe coding 小作品与网页实验。">
+      <main id="main-content" className="reading-wrap resources-page">
+        <Link to="/halls/" className="back-link">← 返回四馆简介</Link>
+        <header className="resources-heading"><h1>其他</h1></header>
+        <section className="resource-section" aria-labelledby="vibe-coding">
+          <div className="resource-group">
+            <h2 id="vibe-coding">vibe coding</h2>
+            <ul className="resource-list">
+              <li>
+                <div className="resource-actions">
+                  <a href={jellyOcean.url} target="_blank" rel="noopener noreferrer" aria-label="果冻海 / Jelly Ocean（在新标签页打开）">
+                    {jellyOcean.title}<span aria-hidden="true"> ↗</span>
+                  </a>
+                  <button type="button" onClick={copyLink} aria-label="复制果冻海的链接">复制链接</button>
+                </div>
+                <p>{jellyOcean.description}</p>
+                <p className="resource-copy-status" role="status">{message}</p>
+                {showCopyUrl && (
+                  <input
+                    className="resource-copy-url"
+                    aria-label="果冻海的链接"
+                    readOnly
+                    value={jellyOcean.url}
+                    onFocus={event => event.currentTarget.select()}
+                  />
+                )}
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </Layout>
+  );
+}
